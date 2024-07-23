@@ -6,6 +6,7 @@
 * utilisation de `SpringBoot` pour faire une API type `REST`
 * Utilisatin de l'IDE `IntelliJ Idea` pour le devloppement de l'API (Back-End)
 * Utilisation `Visual Studio code` pour le developpement du Front-End (Angular)
+* Utilisation de `umbrello` pour les diagramme de classe et sequence
 
 
 ## Specification
