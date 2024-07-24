@@ -16,12 +16,11 @@ public class ConnexionDB {
 
     //DB connection Init
     public void getConnection(String host, int port, String database, String userName, String password) throws SQLException {
-        this.conn = null;
         this.connected = false;
         String url = "jdbc:postgresql://" + host + ":" + port + "/" + database;
         Properties props = new Properties();
-        props.setProperty("user", "fred");
-        props.setProperty("password", "secret");
+        props.setProperty("user", userName);
+        props.setProperty("password", password);
         //props.setProperty("ssl", "true");
         this.conn = DriverManager.getConnection(url, props);
         this.connected = true;
