@@ -10,5 +10,7 @@ public enum Privilege {
         this.privilege = privilege;
     }
 
-
+    public String getPrivilege() {
+        return privilege;
+    }
 }
