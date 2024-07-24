@@ -6,19 +6,15 @@ INSERT INTO ACCOUNT VALUES (1,'test','admin1','akiizsan@gmail.com','admin');
 INSERT INTO GROUPE VALUES (0,'groupe1','groupe1');
 
 -- Insertion Plateforme
-INSERT INTO PLATEFORME VALUES 
+INSERT INTO PLATEFORM VALUES 
     (0,'Riot Games', 'https://www.riotgames.com/fr', null),
     (1,'steams', 'https://store.steampowered.com/', null);
     
 -- Insertion 
-INSERT INTO CREDENTIALS VALUES
-    (0,'xxxxxxxx', 'xxxxxxxxx', 'akiizsan@gmail.com', 1,0),
-    (1,'xxxxxxxx', 'xxxxxxxxx', 'akiizsan0@gmail.com', 1,0);
+INSERT INTO CREDENTIAL VALUES
+    (0,'xxxxxxxx', 'xxxxxxxxx', 'akiizsan@gmail.com', 1,0,0),
+    (1,'xxxxxxxx', 'xxxxxxxxx', 'akiizsan0@gmail.com', 1,0,0);
 
 INSERT INTO MEMBRE VALUES
-    (0,0),
-    (0,1);
-
-INSERT INTO LINKED VALUES
     (0,0),
     (0,1);
