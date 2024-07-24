@@ -17,32 +17,27 @@ CREATE TABLE GROUPE (
     password varchar(255)
 );
 
---creation plateforme
-CREATE TABLE PLATEFORME (
+--creation plateform
+CREATE TABLE PLATEFORM (
     id int PRIMARY KEY,
     nom varchar(255),
     url varchar(255),
-    imgref varchar(255)
+    imgRef varchar(255)
 );
 
-CREATE TABLE CREDENTIALS (
+CREATE TABLE CREDENTIAL (
     id int PRIMARY KEY,
-    accountid varchar(255),
+    accountId varchar(255),
     password varchar(255),
     mail varchar(255),
     A2F int not null constraint chk_A2F CHECK (A2F in (0,1)),
-    plateformid int references PLATEFORME (id)
+    plateformId int references PLATEFORM (id),
+    groupeId int references GROUPE (id)
 );
 
 CREATE TABLE MEMBRE (
-    idgroupe int references GROUPE (id),
-    idaccount int references ACCOUNT (id),
-    PRIMARY KEY (idgroupe,idaccount)
-);
-
-CREATE TABLE LINKED (
-    idgroupe int references GROUPE (id),
-    idcredential int references CREDENTIALS (id),
-    PRIMARY KEY (idgroupe,idcredential)
+    groupId int references GROUPE (id),
+    accountId int references ACCOUNT (id),
+    PRIMARY KEY (groupId,accountId)
 );
 
