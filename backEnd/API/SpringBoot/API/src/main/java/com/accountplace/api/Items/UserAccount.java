@@ -30,17 +30,27 @@ public class UserAccount extends Account{
                 +"email: "+this.getEmail().getMailAddress()+System.lineSeparator()
                 +"hashedPassword: "+this.getHashedPassword()+System.lineSeparator()
                 +"privilege: "+this.privilege.toString()+System.lineSeparator();
-        //return "fsafas";
     }
 
     @Override
     public int hashCode() {
-        return 0;
+        return this.id
+                +this.username.hashCode()
+                +this.email.hashCode()
+                +this.hashedPassword.hashCode()
+                +this.privilege.hashCode();
     }
 
     @Override
     public boolean equals(Object obj) {
-        return false;
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (!(obj instanceof UserAccount)) return false;
+        UserAccount other = (UserAccount) obj;
+        return (this.id == other.id)
+                && (this.username.equals(other.username))
+                && this.email.equals(other.email)
+                && this.hashedPassword.equals(other.hashedPassword)
+                && this.privilege.equals(other.privilege);
     }
-
 }
