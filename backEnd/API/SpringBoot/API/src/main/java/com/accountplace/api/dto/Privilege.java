@@ -1,12 +1,14 @@
-package com.accountplace.api.anciens.items;
+package com.accountplace.api.dto;
 
+import lombok.Getter;
+
+@Getter
 public enum Privilege {
     ADMIN("admin"),
     USER("user");
 
-    private String privilege;
+    private final String privilege;
 
     private Privilege(String privilege) {this.privilege = privilege;}
 
-    public String getPrivilege() {return privilege;}
 }
