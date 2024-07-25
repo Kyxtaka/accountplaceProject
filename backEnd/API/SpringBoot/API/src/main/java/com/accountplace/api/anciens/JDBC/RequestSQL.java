@@ -1,9 +1,9 @@
-package com.accountplace.api.JDBC;
+package com.accountplace.api.anciens.JDBC;
 
 
-import com.accountplace.api.Items.Email;
-import com.accountplace.api.Items.Privilege;
-import com.accountplace.api.Items.UserAccount;
+import com.accountplace.api.anciens.items.Email;
+import com.accountplace.api.anciens.items.Privilege;
+import com.accountplace.api.anciens.items.UserAccount;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,4 +1,4 @@
-package com.accountplace.api.Items;
+package com.accountplace.api.anciens.items;
 
 public class UserAccount extends Account{
     private String hashedPassword;

@@ -1,4 +1,8 @@
-package com.accountplace.api.Items;
+package com.accountplace.api.anciens.items;
+
+import jakarta.persistence.Entity;
+
+@Entity
 
 public abstract class  Account {
     protected int id;
