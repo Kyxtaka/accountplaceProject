@@ -2,10 +2,12 @@ package com.accountplace.api.Items;
 
 public class UserAccount extends Account{
     private String hashedPassword;
-    private Privilege privilege;
+    private final Privilege privilege;
 
-    public UserAccount(int id, String username, String hashedPassword, Email email, Privilege privilege ) {
-        super();
+    public UserAccount(int id, String username, Email email, String hashedPassword, Privilege privilege ) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
         this.hashedPassword = hashedPassword;
         this.privilege = privilege;
     }
@@ -23,7 +25,12 @@ public class UserAccount extends Account{
 
     @Override
     public String toString() {
-        return "";
+        return "UserId: "+this.getId()+System.lineSeparator()
+                +"username: "+this.getUsername()+System.lineSeparator()
+                +"email: "+this.getEmail().getMailAddress()+System.lineSeparator()
+                +"hashedPassword: "+this.getHashedPassword()+System.lineSeparator()
+                +"privilege: "+this.privilege.toString()+System.lineSeparator();
+        //return "fsafas";
     }
 
     @Override

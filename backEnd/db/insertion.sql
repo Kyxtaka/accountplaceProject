@@ -1,6 +1,6 @@
 -- Insertion data test compte utilisateur et admin
 INSERT INTO ACCOUNT VALUES (0,'test','user1','akiizsan@gmail.com','user');
-INSERT INTO ACCOUNT VALUES (1,'test','admin1','akiizsan@gmail.com','admin');
+INSERT INTO ACCOUNT VALUES (1,'test','admin1','nathangamersession@gmail.com','admin');
 
 -- Insertion Groupe1 
 INSERT INTO GROUPE VALUES (0,'groupe1','groupe1');
