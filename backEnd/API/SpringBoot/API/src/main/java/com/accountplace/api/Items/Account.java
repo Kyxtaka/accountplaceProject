@@ -7,29 +7,12 @@ public abstract class  Account {
 
     private void Account() {};
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public void setEmail(Email email) {
-        this.email = email;
-    }
+    public int getId() {return id;}
+    public void setId(int id) {this.id = id;}
+    public String getUsername() {return username;}
+    public void setUsername(String username) {this.username = username;}
+    public Email getEmail() {return email;}
+    public void setEmail(Email email) {this.email = email;}
 
     public abstract boolean changePassword(String oldPassword, String newPassword);
 
