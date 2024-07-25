@@ -20,7 +20,9 @@ public class UserAccount extends Account{
 
     @Override
     public boolean changePassword(String oldPassword, String newPassword) {
-        return false;
+        if (!(hashedPassword.equals(oldPassword))) {return false;}
+        this.hashedPassword = newPassword;
+        return true;
     }
 
     @Override
