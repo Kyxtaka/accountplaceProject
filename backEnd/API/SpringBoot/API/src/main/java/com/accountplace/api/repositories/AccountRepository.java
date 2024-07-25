@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface AccountRepository extends JpaRepository<EntiteAccount, Integer> {
     @Query("SELECT A FROM EntiteAccount A")
-    List<EntiteAccount> getAllAccounts();
+    List<EntiteAccount> findAllAccounts();
 
     @Query("SELECT A FROM EntiteAccount A WHERE A.id=:id")
-    EntiteAccount getAccountById(@Param("id") Integer id);
+    EntiteAccount findAccountById(@Param("id") Integer id);
 }

@@ -12,8 +12,9 @@ import java.util.List;
 public class AccountDto implements IAccount{
     private int id;
     private String username;
-    private String email;
+    private EmailDto email;
     private String password;
     private Privilege privilege;
     private List<GroupDto> groups;
+
 }
