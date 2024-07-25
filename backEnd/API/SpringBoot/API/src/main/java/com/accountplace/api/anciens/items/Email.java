@@ -1,4 +1,4 @@
-package com.accountplace.api.Items;
+package com.accountplace.api.anciens.items;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

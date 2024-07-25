@@ -1,18 +1,17 @@
-package com.accountplace.api.API;
+package com.accountplace.api.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController("/")
-public class API {
+@RestController
+@CrossOrigin
+@RequestMapping("/user")
+public class User {
 
-    @GetMapping("/")
-    public String home() {
-        return "Hello World";
-    }
-
-    @GetMapping("/user")
+    @GetMapping("/getAllUser")
     public String user() {
         return "All users";
     }

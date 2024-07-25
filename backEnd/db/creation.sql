@@ -5,8 +5,8 @@ CREATE TYPE perm AS ENUM ('admin','user');
 CREATE TABLE ACCOUNT (
     id int PRIMARY KEY,
     password varchar(255),
-    username varchar(255),
-    mail varchar(255),
+    username varchar(255) UNIQUE,
+    mail varchar(255) UNIQUE,
     privilges perm
 );
 

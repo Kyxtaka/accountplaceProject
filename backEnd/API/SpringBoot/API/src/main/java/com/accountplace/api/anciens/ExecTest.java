@@ -1,13 +1,9 @@
-package com.accountplace.api.others;
+package com.accountplace.api.anciens;
 
-import com.accountplace.api.Items.Email;
-import com.accountplace.api.Items.Privilege;
-import com.accountplace.api.Items.UserAccount;
-import com.accountplace.api.JDBC.RequestSQL;
-import com.accountplace.api.JDBC.ConnexionDB;
-import org.apache.catalina.User;
-
-import java.sql.SQLException;
+import com.accountplace.api.anciens.JDBC.ConnexionDB;
+import com.accountplace.api.anciens.items.Email;
+import com.accountplace.api.anciens.items.UserAccount;
+import com.accountplace.api.anciens.JDBC.RequestSQL;
 
 public class ExecTest {
     public static void main(String[] args) throws Exception {

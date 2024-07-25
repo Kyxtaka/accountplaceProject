@@ -1,4 +1,4 @@
-package com.accountplace.api.JDBC;
+package com.accountplace.api.anciens.JDBC;
 
 import java.sql.*;
 import java.util.Properties;
