@@ -53,5 +53,4 @@ public class UserAccount extends Account{
                 && this.hashedPassword.equals(other.hashedPassword)
                 && this.privilege.equals(other.privilege);
     }
-
 }
