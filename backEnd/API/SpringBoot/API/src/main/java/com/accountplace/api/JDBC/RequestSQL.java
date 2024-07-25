@@ -16,9 +16,7 @@ public class RequestSQL {
     ConnexionDB thisConn;
     Statement stmt;
 
-    public RequestSQL(ConnexionDB con) throws SQLException {
-        this.thisConn = con;
-    }
+    public RequestSQL(ConnexionDB con) throws SQLException {this.thisConn = con;}
 
     public void insertAccountPlateforme(String name, String url, String imgRef) throws SQLException {
         String request = "INSERT INTO PLATEFORME VALUES (?,?,?,?)";
