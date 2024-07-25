@@ -11,12 +11,9 @@ public class UserAccount extends Account{
         this.hashedPassword = hashedPassword;
         this.privilege = privilege;
     }
-    public String getHashedPassword() {
-        return hashedPassword;
-    }
-    public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
-    }
+    public String getHashedPassword() {return hashedPassword;}
+
+    public void setHashedPassword(String hashedPassword) {this.hashedPassword = hashedPassword;}
 
     @Override
     public boolean changePassword(String oldPassword, String newPassword) {

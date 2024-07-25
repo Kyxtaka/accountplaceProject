@@ -6,11 +6,7 @@ public enum Privilege {
 
     private String privilege;
 
-    private Privilege(String privilege) {
-        this.privilege = privilege;
-    }
+    private Privilege(String privilege) {this.privilege = privilege;}
 
-    public String getPrivilege() {
-        return privilege;
-    }
+    public String getPrivilege() {return privilege;}
 }
