@@ -5,22 +5,22 @@ CREATE TYPE perm AS ENUM ('admin','user');
 CREATE TABLE ACCOUNT (
     id int PRIMARY KEY,
     password varchar(255),
-    username varchar(255) UNIQUE,
-    mail varchar(255) UNIQUE,
-    privilges perm
+    username varchar(255) UNIQUE NOT null,
+    mail varchar(255) UNIQUE NOT NULL,
+    privilege perm NOT NULL
 );
 
 --creation groupe
 CREATE TABLE GROUPE (
     id int PRIMARY KEY,
-    nom varchar(255),
+    nom varchar(255) UNIQUE NOT null,
     password varchar(255)
 );
 
 --creation plateform
 CREATE TABLE PLATEFORM (
     id int PRIMARY KEY,
-    nom varchar(255),
+    nom varchar(255) UNIQUE,
     url varchar(255),
     imgRef varchar(255)
 );

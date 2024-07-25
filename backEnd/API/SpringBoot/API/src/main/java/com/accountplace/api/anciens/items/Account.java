@@ -1,13 +1,11 @@
 package com.accountplace.api.anciens.items;
 
-import jakarta.persistence.Entity;
-
-@Entity
+import com.accountplace.api.dto.EmailDto;
 
 public abstract class  Account {
     protected int id;
     protected String username;
-    protected Email email;
+    protected EmailDto email;
 
     private void Account() {};
 
@@ -15,8 +13,8 @@ public abstract class  Account {
     public void setId(int id) {this.id = id;}
     public String getUsername() {return username;}
     public void setUsername(String username) {this.username = username;}
-    public Email getEmail() {return email;}
-    public void setEmail(Email email) {this.email = email;}
+    public EmailDto getEmail() {return email;}
+    public void setEmail(EmailDto email) {this.email = email;}
 
     public abstract boolean changePassword(String oldPassword, String newPassword);
 

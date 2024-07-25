@@ -1,11 +1,13 @@
 package com.accountplace.api.anciens.items;
 
+import com.accountplace.api.dto.EmailDto;
+
 public class SharedAccount extends Account {
     private String encryptedPassword;
     private String DecryptedPassword;
     private boolean A2F;
 
-    public SharedAccount(int id, Email email, String username, String password, String encryptedPassword, boolean A2F) {
+    public SharedAccount(int id, EmailDto email, String username, String password, String encryptedPassword, boolean A2F) {
         this.id = id;
         this.email = email;
         this.username = username;
