@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class AccountDto implements IAccount{
-    private int id;
+    private Integer id;
     private String username;
     private EmailDto email;
     private String password;
