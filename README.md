@@ -15,6 +15,8 @@
 - version de SpringBoot : `3.3.2`
 - version de Maven : `4.0.0`
 - version de JAVA SDK : `22`
+- version ubuntu (Host Server PosgreSQL) : `22.04 LTS`
+- version Windows : `11`
 
 ## Maven depedencies
 * `PostgreSQL Driver`
