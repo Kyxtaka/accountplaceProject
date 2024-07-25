@@ -17,7 +17,7 @@ public class EntiteAccount implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "mail", nullable = false, unique = true)
     private String email;
