@@ -1,11 +1,11 @@
 package com.accountplace.api.Items;
 
 public abstract class  Account {
-    private int id;
-    private String username;
-    private Email email;
+    protected int id;
+    protected String username;
+    protected Email email;
 
-    private void Account() { };
+    private void Account() {};
 
     public int getId() {
         return id;
