@@ -28,6 +28,10 @@ public class GroupService {
         return groupRepository.findGroupById(id);
     }
 
+    public List<EntiteGroupe> listGroupByName(String name) {
+        return groupRepository.findGroupByNom(name);
+    }
+
     public EntiteGroupe updateGroup(long id,EntiteGroupe entiteGroupe) {
         return groupRepository.findById(id).map( groupe -> {
             groupe.setId(entiteGroupe.getId());

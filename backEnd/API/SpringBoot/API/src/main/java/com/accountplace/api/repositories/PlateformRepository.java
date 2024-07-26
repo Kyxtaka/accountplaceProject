@@ -8,14 +8,13 @@ import java.util.List;
 
 @Repository
 public interface PlateformRepository {
-    @Query("SELECT P FROM EntitePlateform P")
-    List<EntitePlateform> findAll();
-
     @Query("SELECT P FROM EntitePlateform P WHERE P.id=:id")
     EntitePlateform findById(int id);
 
-    @Query("SELECT P FROM EntitePlateform P WHERE P.nom LIKE('%:word%') OR P.url LIKE('%:word%')")
-    EntitePlateform findBySearch(String word);
+    @Query("SELECT P FROM EntitePlateform P")
+    List<EntitePlateform> findAll();
 
+    @Query("SELECT P FROM EntitePlateform P WHERE P.nom LIKE('%:word%') OR P.url LIKE('%:word%')")
+    List<EntitePlateform> findBySearch(String word);
 
 }
