@@ -21,5 +21,6 @@
 ## Maven depedencies
 * `PostgreSQL Driver`
 * `Spring Web`
+* `lombok`
 
 ## Status application : `En cours de developpement`
