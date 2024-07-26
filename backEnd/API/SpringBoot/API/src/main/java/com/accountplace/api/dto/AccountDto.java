@@ -9,12 +9,11 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class AccountDto implements IAccount{
-    private Integer id;
+public class AccountDto{
+    private int id;
     private String username;
-    private EmailDto email;
+    private Email email;
     private String password;
     private Privilege privilege;
     private List<GroupDto> groups;
-
 }

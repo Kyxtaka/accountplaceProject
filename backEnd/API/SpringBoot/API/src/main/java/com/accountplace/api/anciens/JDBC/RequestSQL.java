@@ -1,7 +1,7 @@
 package com.accountplace.api.anciens.JDBC;
 
 
-import com.accountplace.api.dto.EmailDto;
+import com.accountplace.api.dto.Email;
 import com.accountplace.api.dto.Privilege;
 import com.accountplace.api.anciens.items.UserAccount;
 
@@ -28,7 +28,7 @@ public class RequestSQL {
         stmt.executeUpdate();
     }
 
-    public UserAccount getUserAccount(EmailDto mail) throws Exception {
+    public UserAccount getUserAccount(Email mail) throws Exception {
         String request =  "SELECT * FROM ACCOUNT WHERE mail=?";
         PreparedStatement stmt = this.thisConn.prepareStatement(request);
         stmt.setString(1, mail.toString());

@@ -1,15 +1,15 @@
 package com.accountplace.api.anciens;
 
 import com.accountplace.api.anciens.JDBC.ConnexionDB;
-import com.accountplace.api.dto.EmailDto;
+import com.accountplace.api.dto.Email;
 import com.accountplace.api.anciens.items.UserAccount;
 import com.accountplace.api.anciens.JDBC.RequestSQL;
 
 public class ExecTest {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello World");
-        EmailDto testE = new EmailDto("akiizsan@gmail.com");
-        EmailDto testE2 = new EmailDto("nathangamersession@gmail.com");
+        Email testE = new Email("akiizsan@gmail.com");
+        Email testE2 = new Email("nathangamersession@gmail.com");
         ConnexionDB laConn = new ConnexionDB();
         laConn.getConnection(
                 "localhost",
