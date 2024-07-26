@@ -34,7 +34,6 @@ public class GroupService {
 
     public EntiteGroupe updateGroup(int id,EntiteGroupe entiteGroupe) {
         return groupRepository.findById(id).map( groupe -> {
-            groupe.setId(entiteGroupe.getId());
             groupe.setNom(entiteGroupe.getNom());
             groupe.setPassword(entiteGroupe.getPassword());
             return groupRepository.save(groupe);
