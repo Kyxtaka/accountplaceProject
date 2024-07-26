@@ -28,6 +28,14 @@ public class AccountService {
         return anAccountRepository.findAccountById(id);
     }
 
+    public EntiteAccount getAccountByEmail(String email) {
+        return anAccountRepository.findAccountByEmail(email);
+    }
+
+    public EntiteAccount getAccountByUsername(String username) {
+        return anAccountRepository.findAccountByUsername(username);
+    }
+
     public long countAccount() {
         return anAccountRepository.count();
     }
