@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class GroupDto implements IGroup{
+public class GroupDto{
     private int id;
     private String name;
     private String description;

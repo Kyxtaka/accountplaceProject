@@ -9,8 +9,9 @@ import java.util.Objects;
 @Setter
 public class EntiteMembrePK implements Serializable {
 
-    private Integer groupid;
-    private Integer accountid;
+
+    private int groupid;
+    private int accountid;
 
     @Override
     public boolean equals(Object o) {

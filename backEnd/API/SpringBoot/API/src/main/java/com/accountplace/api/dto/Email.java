@@ -7,10 +7,8 @@ import java.util.regex.Pattern;
 
 @Setter
 @Getter
-@ToString
 @AllArgsConstructor
-@EqualsAndHashCode
-public class EmailDto {
+public class Email {
     String mailAddress;
 
     public boolean isValid() {

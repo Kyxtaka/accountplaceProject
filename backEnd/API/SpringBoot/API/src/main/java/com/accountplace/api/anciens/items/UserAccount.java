@@ -1,13 +1,13 @@
 package com.accountplace.api.anciens.items;
 
-import com.accountplace.api.dto.EmailDto;
+import com.accountplace.api.dto.Email;
 import com.accountplace.api.dto.Privilege;
 
 public class UserAccount extends Account{
     private String hashedPassword;
     private final Privilege privilege;
 
-    public UserAccount(int id, String username, EmailDto email, String hashedPassword, Privilege privilege ) {
+    public UserAccount(int id, String username, Email email, String hashedPassword, Privilege privilege ) {
         this.id = id;
         this.username = username;
         this.email = email;

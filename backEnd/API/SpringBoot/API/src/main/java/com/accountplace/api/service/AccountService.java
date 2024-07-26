@@ -2,11 +2,10 @@ package com.accountplace.api.service;
 
 import com.accountplace.api.domains.EntiteAccount;
 import com.accountplace.api.dto.AccountDto;
-import com.accountplace.api.dto.EmailDto;
+import com.accountplace.api.dto.Email;
 import com.accountplace.api.dto.Privilege;
 import com.accountplace.api.repositories.AccountRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -55,7 +54,7 @@ public class AccountService {
 
     private AccountDto convertToDto(EntiteAccount entiteAccount) {
         Privilege privilege = Privilege.valueOf(entiteAccount.getPrivileges());
-        EmailDto email =  new EmailDto(entiteAccount.getEmail());
+        Email email =  new Email(entiteAccount.getEmail());
         return new AccountDto(
                 entiteAccount.getId(),
                 entiteAccount.getUsername(),

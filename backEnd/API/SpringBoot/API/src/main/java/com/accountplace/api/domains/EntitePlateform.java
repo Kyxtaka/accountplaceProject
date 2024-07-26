@@ -16,7 +16,7 @@ public class EntitePlateform implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private int id;
 
     @Column(name = "nom", nullable = false)
     private String nom;
