@@ -1,12 +1,17 @@
 package com.accountplace.api.service;
 
 import com.accountplace.api.domains.EntiteAccount;
+import com.accountplace.api.domains.EntiteGroupe;
+import com.accountplace.api.domains.EntiteMembre;
 import com.accountplace.api.dto.AccountDto;
 import com.accountplace.api.dto.Email;
+import com.accountplace.api.dto.GroupDto;
 import com.accountplace.api.dto.Privilege;
 import com.accountplace.api.repositories.AccountRepository;
+import com.accountplace.api.repositories.GroupRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,7 +21,15 @@ import java.util.List;
 @AllArgsConstructor
 public class AccountService {
 
+    @Autowired
     private AccountRepository accountRepository;
+    @Autowired
+    private GroupRepository groupRepository;
+
+    @Autowired
+    private MembreService membreService;
+    @Autowired
+    private GroupService groupService;
 
     public EntiteAccount createAccount(EntiteAccount entiteAccount) {
         return accountRepository.save(entiteAccount);
@@ -65,13 +78,18 @@ public class AccountService {
     private AccountDto convertToDto(EntiteAccount entiteAccount) {
         Privilege privilege = Privilege.valueOf(entiteAccount.getPrivileges());
         Email email =  new Email(entiteAccount.getEmail());
+        ArrayList<GroupDto> groups = new ArrayList<>();
+        for (EntiteMembre grp: membreService.getAllMembreByAccountId(entiteAccount.getId())) {
+            groups.add(groupService.getGroupDtoById(grp.getGroupid().getId()));
+        }
+
         return new AccountDto(
                 entiteAccount.getId(),
                 entiteAccount.getUsername(),
                 email,
                 entiteAccount.getPassword(),
                 privilege,
-                new ArrayList<>()
+                groups
         );
     }
 
