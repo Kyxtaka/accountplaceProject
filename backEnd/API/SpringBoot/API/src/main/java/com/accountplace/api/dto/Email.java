@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 @Setter
 @Getter
 @AllArgsConstructor
+@ToString
 public class Email {
     String mailAddress;
 
