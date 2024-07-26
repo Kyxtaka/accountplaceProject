@@ -48,7 +48,7 @@ public class RequestSQL {
            );
        }
         if (acc != null) {return acc;}
-        else {throw new Exception("No account");}
+        else {throw new Exception("No accountid");}
     }
 
 }

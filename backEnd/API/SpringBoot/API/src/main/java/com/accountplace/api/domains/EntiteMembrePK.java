@@ -9,6 +9,7 @@ import java.util.Objects;
 @Setter
 public class EntiteMembrePK implements Serializable {
 
+
     private Integer groupid;
     private Integer accountid;
 

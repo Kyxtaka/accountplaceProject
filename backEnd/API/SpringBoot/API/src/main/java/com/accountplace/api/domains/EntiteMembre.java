@@ -18,23 +18,23 @@ public class EntiteMembre implements Serializable {
     @Id
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "groupid", nullable = false)
-    private EntiteGroupe group;
+    private EntiteGroupe groupid;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "accountid", nullable = false)
-    private EntiteAccount account;
+    private EntiteAccount accountid;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EntiteMembre that = (EntiteMembre) o;
-        return Objects.equals(group, that.group) && Objects.equals(account, that.account);
+        return Objects.equals(groupid, that.groupid) && Objects.equals(accountid, that.accountid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(group, account);
+        return Objects.hash(groupid, accountid);
     }
 }
