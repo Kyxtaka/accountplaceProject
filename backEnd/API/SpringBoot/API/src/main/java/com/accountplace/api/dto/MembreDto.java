@@ -9,12 +9,7 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @ToString
-public class CredentialDto {
-    private int id;
-    private String username;
-    private String password;
-    private Email email;
-    private boolean a2f;
-    private int plateformId;
+public class MembreDto {
     private int groupId;
+    private int accountId;
 }

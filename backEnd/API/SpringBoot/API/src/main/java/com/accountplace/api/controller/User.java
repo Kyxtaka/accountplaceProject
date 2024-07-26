@@ -3,10 +3,7 @@ package com.accountplace.api.controller;
 import com.accountplace.api.service.AccountService;
 import com.accountplace.api.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -32,6 +29,11 @@ public class User {
     @GetMapping("/testUser")
     public String testUser() {
         return accountService.getAccountById(0).toString();
+    }
+
+    @GetMapping("/getUser/{id}")
+    public String testUser(@PathVariable int id) {
+        return accountService.getAccountById(id).toString();
     }
 
 

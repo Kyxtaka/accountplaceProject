@@ -2,6 +2,7 @@ package com.accountplace.api.repositories;
 
 import com.accountplace.api.domains.EntiteGroupe;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.query.Param;
@@ -9,10 +10,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 @Repository
-public interface GroupRepository extends JpaRepository<EntiteGroupe, Long> {
-    @Query("SELECT G FROM EntiteGroupe G")
-    List<EntiteGroupe> findAllGroups();
+public interface GroupRepository extends JpaRepository<EntiteGroupe, Integer> {
+    @Query("SELECT G FROM EntiteGroupe G WHERE G.nom LIKE('%:nom%')")
+    List<EntiteGroupe> findGroupByNom(@Param("nom") String nom);
 
-    @Query("SELECT G FROM EntiteGroupe G WHERE G.id=:id")
-    EntiteGroupe findGroupById(@Param("id") int id);
 }
