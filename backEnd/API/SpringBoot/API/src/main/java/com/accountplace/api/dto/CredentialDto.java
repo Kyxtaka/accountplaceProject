@@ -15,6 +15,6 @@ public class CredentialDto {
     private String password;
     private Email email;
     private boolean a2f;
-    private Integer plateformId;
-    private Integer groupId;
+    private int plateformId;
+    private int groupId;
 }

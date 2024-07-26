@@ -33,9 +33,9 @@ public class EntiteCredential implements Serializable {
     private int a2f;
 
     @Column(name = "plateformid", nullable = false)
-    private String plateformid;
+    private int plateformid;
 
     @Column(name = "groupeid", nullable = false)
-    private String groupid;
+    private int groupid;
 
 }
