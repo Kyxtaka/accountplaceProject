@@ -15,4 +15,5 @@ public interface GroupRepository extends JpaRepository<EntiteGroupe, Long> {
 
     @Query("SELECT G FROM EntiteGroupe G WHERE G.id=:id")
     EntiteGroupe findGroupById(@Param("id") int id);
+
 }

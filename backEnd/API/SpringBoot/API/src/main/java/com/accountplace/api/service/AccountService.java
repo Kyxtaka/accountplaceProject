@@ -57,7 +57,7 @@ public class AccountService {
         return "Account with id " + id + " has been deleted successfully";
     }
 
-    public AccountDto getAccountDtoById(Integer id) {
+    public AccountDto getAccountDtoById(int id) {
         EntiteAccount entiteAccount = anAccountRepository.findById(id).orElseThrow(() -> new RuntimeException("Account not found with id " + id));
         return convertToDto(entiteAccount);
     }
