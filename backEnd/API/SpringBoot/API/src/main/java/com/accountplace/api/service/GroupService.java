@@ -3,6 +3,7 @@ package com.accountplace.api.service;
 import com.accountplace.api.domains.EntiteGroupe;
 import com.accountplace.api.dto.GroupDto;
 import com.accountplace.api.repositories.GroupRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,11 +22,11 @@ public class GroupService {
     }
 
     public List<EntiteGroupe> listGroups() {
-        return groupRepository.findAllGroups();
+        return groupRepository.findAll();
     }
 
     public EntiteGroupe getGroupById(int id) {
-        return groupRepository.findGroupById(id);
+        return groupRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     public List<EntiteGroupe> listGroupByName(String name) {
@@ -46,7 +47,7 @@ public class GroupService {
     }
 
     public GroupDto getGroupDtoById(int id) {
-        EntiteGroupe entiteGroupe = groupRepository.findGroupById(id);
+        EntiteGroupe entiteGroupe = groupRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         return convertToDto(entiteGroupe);
     }
 

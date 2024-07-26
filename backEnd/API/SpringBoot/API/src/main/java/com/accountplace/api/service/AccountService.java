@@ -5,8 +5,8 @@ import com.accountplace.api.dto.AccountDto;
 import com.accountplace.api.dto.Email;
 import com.accountplace.api.dto.Privilege;
 import com.accountplace.api.repositories.AccountRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,49 +16,49 @@ import java.util.List;
 @AllArgsConstructor
 public class AccountService {
 
-    private AccountRepository anAccountRepository;
+    private AccountRepository accountRepository;
 
     public EntiteAccount createAccount(EntiteAccount entiteAccount) {
-        return anAccountRepository.save(entiteAccount);
+        return accountRepository.save(entiteAccount);
     }
 
     public List<EntiteAccount> getAllAccounts() {
-        return anAccountRepository.findAllAccounts();
+        return accountRepository.findAll();
     }
 
     public EntiteAccount getAccountById(int id) {
-        return anAccountRepository.findAccountById(id);
+        return accountRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     public EntiteAccount getAccountByEmail(String email) {
-        return anAccountRepository.findAccountByEmail(email);
+        return accountRepository.findAccountByEmail(email);
     }
 
     public EntiteAccount getAccountByUsername(String username) {
-        return anAccountRepository.findAccountByUsername(username);
+        return accountRepository.findAccountByUsername(username);
     }
 
     public long countAccount() {
-        return anAccountRepository.count();
+        return accountRepository.count();
     }
 
     public EntiteAccount updateAccount(int id, EntiteAccount account) {
-        return anAccountRepository.findById(id).map(account1 -> {
+        return accountRepository.findById(id).map(account1 -> {
             account1.setUsername(account.getUsername());
             account1.setPassword(account.getPassword());
             account1.setEmail(account.getEmail());
             account1.setPrivileges(account.getPrivileges());
-            return anAccountRepository.save(account1);
+            return accountRepository.save(account1);
         }).orElseThrow(() -> new RuntimeException("Account not found with id " + id));
     }
 
     public String deleteAccountById(int id) {
-        anAccountRepository.deleteById(id);
+        accountRepository.deleteById(id);
         return "Account with id " + id + " has been deleted successfully";
     }
 
     public AccountDto getAccountDtoById(int id) {
-        EntiteAccount entiteAccount = anAccountRepository.findById(id).orElseThrow(() -> new RuntimeException("Account not found with id " + id));
+        EntiteAccount entiteAccount = accountRepository.findById(id).orElseThrow(() -> new RuntimeException("Account not found with id " + id));
         return convertToDto(entiteAccount);
     }
 
