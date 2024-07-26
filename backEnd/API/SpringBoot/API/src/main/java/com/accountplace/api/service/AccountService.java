@@ -8,6 +8,7 @@ import com.accountplace.api.repositories.AccountRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -69,7 +70,7 @@ public class AccountService {
                 email,
                 entiteAccount.getPassword(),
                 privilege,
-                null
+                new ArrayList<>()
         );
     }
 
