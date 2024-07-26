@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 @Repository
-public interface GroupRepository extends JpaRepository<EntiteGroupe, Long> {
+public interface GroupRepository extends JpaRepository<EntiteGroupe, Integer> {
     @Query("SELECT G FROM EntiteGroupe G")
     List<EntiteGroupe> findAllGroups();
 

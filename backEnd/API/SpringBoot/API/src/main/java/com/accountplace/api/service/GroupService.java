@@ -32,7 +32,7 @@ public class GroupService {
         return groupRepository.findGroupByNom(name);
     }
 
-    public EntiteGroupe updateGroup(long id,EntiteGroupe entiteGroupe) {
+    public EntiteGroupe updateGroup(int id,EntiteGroupe entiteGroupe) {
         return groupRepository.findById(id).map( groupe -> {
             groupe.setId(entiteGroupe.getId());
             groupe.setNom(entiteGroupe.getNom());
@@ -41,7 +41,7 @@ public class GroupService {
         }).orElseThrow( () -> new RuntimeException("Group with " + id + " not found"));
     }
 
-    public String deleteGroupById(long id) {
+    public String deleteGroupById(int id) {
         groupRepository.deleteById(id);
         return "Group with " + id + " has been deleted successfully";
     }
