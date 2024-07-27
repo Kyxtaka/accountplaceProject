@@ -12,10 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 public class AccountDto{
-    private int id;
+    private Integer id;
     private String username;
     private Email email;
     private String password;
-    private Privilege privilege;
+    private String privilege;
     private List<GroupDto> groups;
 }

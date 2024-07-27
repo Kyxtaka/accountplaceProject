@@ -10,6 +10,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class MembreDto {
-    private int groupId;
-    private int accountId;
+    private Integer groupId;
+    private Integer accountId;
 }

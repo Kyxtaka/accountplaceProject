@@ -39,7 +39,7 @@ public class AccountService {
         return accountRepository.findAll();
     }
 
-    public EntiteAccount getAccountById(int id) {
+    public EntiteAccount getAccountById(Integer id) {
         return accountRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
@@ -55,7 +55,7 @@ public class AccountService {
         return accountRepository.count();
     }
 
-    public EntiteAccount updateAccount(int id, EntiteAccount account) {
+    public EntiteAccount updateAccount(Integer id, EntiteAccount account) {
         return accountRepository.findById(id).map(account1 -> {
             account1.setUsername(account.getUsername());
             account1.setPassword(account.getPassword());
@@ -65,30 +65,29 @@ public class AccountService {
         }).orElseThrow(() -> new RuntimeException("Account not found with id " + id));
     }
 
-    public String deleteAccountById(int id) {
+    public String deleteAccountById(Integer id) {
         accountRepository.deleteById(id);
         return "Account with id " + id + " has been deleted successfully";
     }
 
-    public AccountDto getAccountDtoById(int id) {
+    public AccountDto getAccountDtoById(Integer id) {
         EntiteAccount entiteAccount = accountRepository.findById(id).orElseThrow(() -> new RuntimeException("Account not found with id " + id));
         return convertToDto(entiteAccount);
     }
 
     private AccountDto convertToDto(EntiteAccount entiteAccount) {
-        Privilege privilege = Privilege.valueOf(entiteAccount.getPrivileges());
+//      Privilege privilege = Privilege.valueOf(entiteAccount.getPrivileges());
         Email email =  new Email(entiteAccount.getEmail());
-        ArrayList<GroupDto> groups = new ArrayList<>();
+        List<GroupDto> groups = new ArrayList<>();
         for (EntiteMembre grp: membreService.getAllMembreByAccountId(entiteAccount.getId())) {
             groups.add(groupService.getGroupDtoById(grp.getGroupid().getId()));
         }
-
         return new AccountDto(
                 entiteAccount.getId(),
                 entiteAccount.getUsername(),
                 email,
                 entiteAccount.getPassword(),
-                privilege,
+                entiteAccount.getPrivileges(),
                 groups
         );
     }

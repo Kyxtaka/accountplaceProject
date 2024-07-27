@@ -10,7 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class GroupDto{
-    private int id;
+    private Integer id;
     private String name;
     private String description;
     private String password;

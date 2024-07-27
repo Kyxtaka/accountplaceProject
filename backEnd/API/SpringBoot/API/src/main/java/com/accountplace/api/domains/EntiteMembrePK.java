@@ -12,8 +12,8 @@ import java.util.Objects;
 public class EntiteMembrePK implements Serializable {
 
 
-    private int groupid;
-    private int accountid;
+    private Integer groupid;
+    private Integer accountid;
 
     @Override
     public boolean equals(Object o) {

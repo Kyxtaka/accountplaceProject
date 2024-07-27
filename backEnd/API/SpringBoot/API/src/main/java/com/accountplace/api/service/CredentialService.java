@@ -25,15 +25,15 @@ public class CredentialService {
         return credentialRepository.findAll();
     }
 
-    public EntiteCredential getCredentialById(int id) {
+    public EntiteCredential getCredentialById(Integer id) {
         return credentialRepository.findById(id).orElseThrow( () -> new RuntimeException("Credential not found"));
     }
 
-    public List<EntiteCredential> getAllCredentialByGroupId(int groupId) {
+    public List<EntiteCredential> getAllCredentialByGroupId(Integer groupId) {
         return credentialRepository.listCredentialByGroupId(groupId);
     }
 
-    public List<EntiteCredential> getAllCredentialByGroupAndPlateformId(int groupId, int plateformId) {
+    public List<EntiteCredential> getAllCredentialByGroupAndPlateformId(Integer groupId, Integer plateformId) {
         return credentialRepository.listCredentialByGroupAndPlateformId(groupId, plateformId);
     }
 
@@ -41,7 +41,7 @@ public class CredentialService {
         return credentialRepository.listCredentialByMail(mail.getMailAddress());
     }
 
-    public EntiteCredential updateCredential(int id,EntiteCredential entiteCredential) {
+    public EntiteCredential updateCredential(Integer id,EntiteCredential entiteCredential) {
         return credentialRepository.findById(id).map( credential -> {
            credential.setAccountid(entiteCredential.getAccountid());
            credential.setMail(entiteCredential.getMail());
@@ -52,12 +52,12 @@ public class CredentialService {
         }).orElseThrow(() -> new RuntimeException("Credential not found"));
     }
 
-    public String deleteCredentialById(int id) {
+    public String deleteCredentialById(Integer id) {
         credentialRepository.deleteById(id);
         return "Credential deleted with id: " + id + " has been deleted successfully";
     }
 
-    public CredentialDto getCredentialDtoById(int id) {
+    public CredentialDto getCredentialDtoById(Integer id) {
         EntiteCredential entiteCredential = credentialRepository.findById(id).orElseThrow(() -> new RuntimeException("Credential not found"));
         return convertToDto(entiteCredential);
     }

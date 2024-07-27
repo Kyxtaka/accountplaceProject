@@ -10,11 +10,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class CredentialDto {
-    private int id;
+    private Integer id;
     private String username;
     private String password;
     private Email email;
     private boolean a2f;
-    private int plateformId;
-    private int groupId;
+    private Integer plateformId;
+    private Integer groupId;
 }

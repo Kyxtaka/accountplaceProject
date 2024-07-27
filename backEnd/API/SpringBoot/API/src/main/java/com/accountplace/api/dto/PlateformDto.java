@@ -10,7 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class PlateformDto {
-    private int plateformId;
+    private Integer plateformId;
     private String plateformName;
     private String url;
     private String imgRef;
