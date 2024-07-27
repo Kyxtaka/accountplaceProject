@@ -22,22 +22,22 @@ public class MembreService {
         return membreRepository.findAll();
     }
 
-    public List<EntiteMembre> getAllMembreByAccountId(int id) {
+    public List<EntiteMembre> getAllMembreByAccountId(Integer id) {
         return membreRepository.findByAccountId(id);
     }
 
-    public List<EntiteMembre> getAllMembreByGroupId(int id) {
+    public List<EntiteMembre> getAllMembreByGroupId(Integer id) {
         return membreRepository.findByGroupId(id);
     }
 
-    public EntiteMembre getMembreById(int groupId, int accountId) {
+    public EntiteMembre getMembreById(Integer groupId, Integer accountId) {
         return membreRepository.findByFullId(groupId, accountId);
     }
-    public String deleteMembreById(int Id) {
+    public String deleteMembreById(Integer Id) {
         membreRepository.deleteById(Id);
         return "Membre with id " + Id + " has been deleted successfully";
     }
-    public MembreDto getMembreDtoById(int groupId, int accountId) {
+    public MembreDto getMembreDtoById(Integer groupId, Integer accountId) {
         EntiteMembre membre = membreRepository.findByFullId(groupId, accountId);
         return convertToDto(membre);
     }

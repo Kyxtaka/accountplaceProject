@@ -11,11 +11,11 @@ import java.util.List;
 @Repository
 public interface MembreRepository extends JpaRepository<EntiteMembre, Integer> {
     @Query("SELECT M FROM EntiteMembre M WHERE M.accountid=:aId")
-    List<EntiteMembre> findByAccountId(@Param("aId") int aId);
+    List<EntiteMembre> findByAccountId(@Param("aId") Integer aId);
 
     @Query("SELECT M FROM EntiteMembre M WHERE M.groupid=:gId")
-    List<EntiteMembre> findByGroupId(@Param("gId") int gId);
+    List<EntiteMembre> findByGroupId(@Param("gId") Integer gId);
 
     @Query("SELECT M FROM EntiteMembre M WHERE M.groupid=:gId AND M.accountid=:aId")
-    EntiteMembre findByFullId(@Param("gId") int gId, @Param("aId") int aId);
+    EntiteMembre findByFullId(@Param("gId") Integer gId, @Param("aId") Integer aId);
 }

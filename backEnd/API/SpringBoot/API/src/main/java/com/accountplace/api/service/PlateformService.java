@@ -22,7 +22,7 @@ public class PlateformService {
         return plateformRepository.save(entitePlateform);
     }
 
-    public EntitePlateform getPlateformById(int id) {
+    public EntitePlateform getPlateformById(Integer id) {
         return plateformRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
@@ -33,7 +33,7 @@ public class PlateformService {
         return plateformRepository.findBySearch(name);
     }
 
-    public EntitePlateform updatePlateform(int id,EntitePlateform entitePlateform) {
+    public EntitePlateform updatePlateform(Integer id,EntitePlateform entitePlateform) {
         return plateformRepository.findById(id).map( plateform1 -> {
             plateform1.setNom(entitePlateform.getNom());
             plateform1.setUrl(entitePlateform.getUrl());
@@ -42,12 +42,12 @@ public class PlateformService {
         }).orElseThrow( () -> new RuntimeException("Plateform with " + id + " not found") );
     }
 
-    public String deletePlateform(int id) {
+    public String deletePlateform(Integer id) {
         plateformRepository.deleteById(id);
         return "Plateform with id " + id + " has been deleted successfully";
     }
 
-    public PlateformDto getPlateformDtoById(int id) {
+    public PlateformDto getPlateformDtoById(Integer id) {
         EntitePlateform entitePlateform = plateformRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         return convertToDto(entitePlateform);
     }

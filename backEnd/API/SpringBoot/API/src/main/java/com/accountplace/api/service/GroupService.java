@@ -25,7 +25,7 @@ public class GroupService {
         return groupRepository.findAll();
     }
 
-    public EntiteGroupe getGroupById(int id) {
+    public EntiteGroupe getGroupById(Integer id) {
         return groupRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
@@ -33,7 +33,7 @@ public class GroupService {
         return groupRepository.findGroupByNom(name);
     }
 
-    public EntiteGroupe updateGroup(int id,EntiteGroupe entiteGroupe) {
+    public EntiteGroupe updateGroup(Integer id,EntiteGroupe entiteGroupe) {
         return groupRepository.findById(id).map( groupe -> {
             groupe.setNom(entiteGroupe.getNom());
             groupe.setPassword(entiteGroupe.getPassword());
@@ -41,12 +41,12 @@ public class GroupService {
         }).orElseThrow( () -> new RuntimeException("Group with " + id + " not found"));
     }
 
-    public String deleteGroupById(int id) {
+    public String deleteGroupById(Integer id) {
         groupRepository.deleteById(id);
         return "Group with " + id + " has been deleted successfully";
     }
 
-    public GroupDto getGroupDtoById(int id) {
+    public GroupDto getGroupDtoById(Integer id) {
         EntiteGroupe entiteGroupe = groupRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         return convertToDto(entiteGroupe);
     }

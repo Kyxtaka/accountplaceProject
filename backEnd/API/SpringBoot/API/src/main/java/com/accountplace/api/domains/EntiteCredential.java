@@ -18,7 +18,7 @@ public class EntiteCredential implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "mail")
     private String mail;
@@ -30,12 +30,12 @@ public class EntiteCredential implements Serializable {
     private String password;
 
     @Column(name = "a2f")
-    private int a2f;
+    private Integer a2f;
 
     @Column(name = "plateformid", nullable = false)
-    private int plateformid;
+    private Integer plateformid;
 
     @Column(name = "groupeid", nullable = false)
-    private int groupid;
+    private Integer groupid;
 
 }
