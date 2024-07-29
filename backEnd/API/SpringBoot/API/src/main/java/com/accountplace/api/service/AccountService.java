@@ -24,9 +24,6 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
-    private GroupRepository groupRepository;
-
-    @Autowired
     private MembreService membreService;
     @Autowired
     private GroupService groupService;
@@ -51,7 +48,7 @@ public class AccountService {
         return accountRepository.findAccountByUsername(username);
     }
 
-    public long countAccount() {
+    public Long countAccount() {
         return accountRepository.count();
     }
 
