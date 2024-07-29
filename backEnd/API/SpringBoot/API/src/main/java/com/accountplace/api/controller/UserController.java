@@ -25,17 +25,35 @@ public class UserController {
 
     @GetMapping("/all")
     public List<EntiteAccount> getAllUser() {
-        return accountService.getAllAccounts();
+        List<EntiteAccount> result = null;
+        try {
+            result = accountService.getAllAccounts();
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+        }
+        return result;
     }
 
     @GetMapping("/getById")
     public EntiteAccount getUserById(@RequestParam("id") Integer id) {
-        return accountService.getAccountById(id);
+        EntiteAccount result = null;
+        try {
+            result = accountService.getAccountById(id);
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+        }
+        return result;
     }
 
     @GetMapping("/getByEmail")
     public EntiteAccount getUser(@RequestParam("email") String mail) {
-        return accountService.getAccountByEmail(mail);
+        EntiteAccount result = null;
+        try {
+            result = accountService.getAccountByEmail(mail);
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+        }
+        return result;
     }
 
     @GetMapping("get/{id}")
@@ -51,17 +69,33 @@ public class UserController {
 
     @GetMapping("/getByUsername")
     public EntiteAccount getUserByUsername(@RequestParam("username") String username) {
-        return accountService.getAccountByUsername(username);
+        EntiteAccount result = null;
+        try {
+            result = accountService.getAccountByUsername(username);
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+        }
+        return result;
     }
     @GetMapping("count")
     public Long getUserCount() {
-        return accountService.countAccount();
+        Long result = null;
+        try {
+            result = accountService.countAccount();
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+        }
+        return result;
     }
 
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id) {
         String response = null;
-        response = accountService.deleteAccountById(id);
+        try {
+            response = accountService.deleteAccountById(id);
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+        }
         return response;
     }
 
