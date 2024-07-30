@@ -20,7 +20,7 @@ public class UserController {
 
     @GetMapping("/infos")
     public String info() {
-        return "PostgreSQL 14<br>Angular 17<br>Spring Boot 14<br>Maven 4.4.4";
+        return "RestController for User Account of this application";
     }
 
     @GetMapping("/all")
@@ -34,7 +34,7 @@ public class UserController {
         return result;
     }
 
-    @GetMapping("/getById")
+    @GetMapping("/byId")
     public EntiteAccount getUserById(@RequestParam("id") Integer id) {
         EntiteAccount result = null;
         try {
@@ -45,7 +45,7 @@ public class UserController {
         return result;
     }
 
-    @GetMapping("/getByEmail")
+    @GetMapping("/byEmail")
     public EntiteAccount getUser(@RequestParam("email") String mail) {
         EntiteAccount result = null;
         try {
@@ -56,7 +56,7 @@ public class UserController {
         return result;
     }
 
-    @GetMapping("get/{id}")
+    @GetMapping("/dto/{id}")
     public AccountDto getUserDtoById(@PathVariable("id") Integer id) {
         AccountDto accountDto = null;
         try {
@@ -67,7 +67,7 @@ public class UserController {
         return accountDto;
     }
 
-    @GetMapping("/getByUsername")
+    @GetMapping("/byUsername")
     public EntiteAccount getUserByUsername(@RequestParam("username") String username) {
         EntiteAccount result = null;
         try {
@@ -88,11 +88,33 @@ public class UserController {
         return result;
     }
 
+    @GetMapping("create")
+    public EntiteAccount createAccount(@RequestBody EntiteAccount entiteAccount) {
+        EntiteAccount result = null;
+        try {
+            result = accountService.createAccount(entiteAccount);
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+        }
+        return result;
+    }
+
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id) {
         String response = null;
         try {
             response = accountService.deleteAccountById(id);
+        } catch (Exception e) {
+            ResponseEntity.notFound().build();
+        }
+        return response;
+    }
+
+    @GetMapping("/update")
+    public EntiteAccount updateUser(@RequestParam("id") int id,@RequestBody EntiteAccount entiteAccount) {
+        EntiteAccount response = null;
+        try {
+            response = accountService.updateAccount(id, entiteAccount);
         } catch (Exception e) {
             ResponseEntity.notFound().build();
         }
