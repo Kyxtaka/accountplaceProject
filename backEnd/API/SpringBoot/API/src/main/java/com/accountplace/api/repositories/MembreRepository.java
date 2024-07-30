@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface MembreRepository extends JpaRepository<EntiteMembre, Integer> {
-    @Query("SELECT M FROM EntiteMembre M WHERE M.accountid=:aId")
-    List<EntiteMembre> findByAccountId(@Param("aId") Integer aId);
+    @Query("SELECT M FROM EntiteMembre M WHERE M.accountid.id=:aId")
+    List<EntiteMembre> findByAccountId(@Param("aId") int aId);
 
     @Query("SELECT M FROM EntiteMembre M WHERE M.groupid=:gId")
     List<EntiteMembre> findByGroupId(@Param("gId") Integer gId);

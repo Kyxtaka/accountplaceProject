@@ -16,6 +16,6 @@ public interface CredentialRepository  extends JpaRepository<EntiteCredential, I
     @Query("SELECT C FROM EntiteCredential C WHERE C.groupid=:gid AND C.plateformid = :pid")
     List<EntiteCredential> listCredentialByGroupAndPlateformId(@Param("gid") Integer gid, @Param("pid") Integer pid);
 
-    @Query("SELECT C FROM EntiteCredential C WHERE C.mail LIKE('%:mail%')")
+    @Query("SELECT C FROM EntiteCredential C WHERE C.mail LIKE %:mail% ")
     List<EntiteCredential> listCredentialByMail(@Param("mail") String mail);
 }
