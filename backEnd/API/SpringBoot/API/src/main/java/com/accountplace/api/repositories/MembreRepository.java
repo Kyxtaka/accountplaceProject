@@ -18,4 +18,7 @@ public interface MembreRepository extends JpaRepository<EntiteMembre, Integer> {
 
     @Query("SELECT M FROM EntiteMembre M WHERE M.groupid=:gId AND M.accountid=:aId")
     EntiteMembre findByFullId(@Param("gId") Integer gId, @Param("aId") Integer aId);
+
+    @Query("DELETE FROM EntiteMembre M WHERE M.groupid=:gId AND M.accountid=:aId")
+    EntiteMembre deleteByFullId(@Param("gId") Integer gId, @Param("aId") Integer aId);
 }
