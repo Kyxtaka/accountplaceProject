@@ -76,7 +76,7 @@ public class AccountService {
 //      Privilege privilege = Privilege.valueOf(entiteAccount.getPrivileges());
         Email email =  new Email(entiteAccount.getEmail());
         List<GroupDto> groups = new ArrayList<>();
-        for (EntiteMembre grp: membreService.getAllMembreByAccountId(entiteAccount.getId())) {
+        for (EntiteMembre grp: membreService.getAllEntiteMembreByAccountId(entiteAccount.getId())) {
             groups.add(groupService.getGroupDtoById(grp.getGroupid().getId()));
         }
         return new AccountDto(

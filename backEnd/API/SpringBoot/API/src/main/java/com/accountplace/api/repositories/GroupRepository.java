@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface GroupRepository extends JpaRepository<EntiteGroupe, Integer> {
-    @Query("SELECT G FROM EntiteGroupe G WHERE G.nom LIKE('%:nom%')")
+    @Query("SELECT G FROM EntiteGroupe G WHERE G.nom LIKE %:nom% ")
     List<EntiteGroupe> findGroupByNom(@Param("nom") String nom);
 
 }
