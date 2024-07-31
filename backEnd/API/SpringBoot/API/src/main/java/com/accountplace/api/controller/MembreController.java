@@ -27,8 +27,8 @@ public class MembreController {
     }
 
     @GetMapping("/all")
-    public List<EntiteMembre> getAll() {
-        List<EntiteMembre> result = null;
+    public List<MembreDto> getAll() {
+        List<MembreDto> result = null;
         try {
             result = membreService.getAllMembres();
         } catch (Exception e) {
@@ -38,8 +38,8 @@ public class MembreController {
     }
 
     @GetMapping("/byAccountId")
-    public List<EntiteMembre> getByAccountId(@RequestParam("accountId") Integer accountId) {
-        List<EntiteMembre> result = null;
+    public List<MembreDto> getByAccountId(@RequestParam("accountId") Integer accountId) {
+        List<MembreDto> result = null;
         try {
             result = membreService.getAllMembreByAccountId(accountId);
         } catch (Exception e) {
@@ -49,23 +49,12 @@ public class MembreController {
     }
 
     @GetMapping("/byGroupId")
-    public List<EntiteMembre> getByGroupId(@RequestParam("groupId") Integer groupId) {
-        List<EntiteMembre> result = null;
+    public List<MembreDto> getByGroupId(@RequestParam("groupId") Integer groupId) {
+        List<MembreDto> result = null;
         try {
             result = membreService.getAllMembreByGroupId(groupId);
         }
         catch (Exception e) {
-            ResponseEntity.notFound().build();
-        }
-        return result;
-    }
-
-    @GetMapping("/byId")
-    public EntiteMembre getById(@RequestParam("goupId") Integer goupId, @RequestParam("accountId") Integer accountId) {
-        EntiteMembre result = null;
-        try {
-            result = membreService.getMembreById(goupId, accountId);
-        } catch (Exception e) {
             ResponseEntity.notFound().build();
         }
         return result;

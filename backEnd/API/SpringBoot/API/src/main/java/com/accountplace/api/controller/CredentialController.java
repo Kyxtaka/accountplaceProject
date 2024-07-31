@@ -62,7 +62,7 @@ public class CredentialController {
         return credentials;
     }
 
-    @GetMapping("/ByEmail")
+    @GetMapping("/byEmail")
     public List<EntiteCredential> getCredentialByEmail(@RequestParam("email") String email) {
         List<EntiteCredential> credentials = null;
         Email mail = new Email(email);
