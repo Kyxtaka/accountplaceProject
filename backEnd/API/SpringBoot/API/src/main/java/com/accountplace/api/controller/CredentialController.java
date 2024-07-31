@@ -28,7 +28,7 @@ public class CredentialController {
         return credentials;
     }
 
-    @GetMapping("/ById")
+    @GetMapping("/byId")
     public EntiteCredential getCredentialById(@RequestParam("id") Integer id) {
         EntiteCredential credential = null;
         try {
