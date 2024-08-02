@@ -1,4 +1,4 @@
-package com.accountplace.api.domains;
+package com.accountplace.api.domains.data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

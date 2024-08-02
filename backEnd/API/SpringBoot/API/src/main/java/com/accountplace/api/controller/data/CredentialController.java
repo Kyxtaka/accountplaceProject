@@ -1,6 +1,6 @@
-package com.accountplace.api.controller;
+package com.accountplace.api.controller.data;
 
-import com.accountplace.api.domains.EntiteCredential;
+import com.accountplace.api.domains.data.EntiteCredential;
 import com.accountplace.api.dto.CredentialDto;
 import com.accountplace.api.dto.Email;
 import com.accountplace.api.service.CredentialService;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("credential")
+@RequestMapping("api/data/credential")
 public class CredentialController {
 
     @Autowired

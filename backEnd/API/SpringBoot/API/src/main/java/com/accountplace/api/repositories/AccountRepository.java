@@ -2,11 +2,8 @@ package com.accountplace.api.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import com.accountplace.api.domains.EntiteAccount;
-
-import java.util.List;
+import com.accountplace.api.domains.data.EntiteAccount;
 
 @Repository
 public interface AccountRepository extends JpaRepository<EntiteAccount, Integer> {

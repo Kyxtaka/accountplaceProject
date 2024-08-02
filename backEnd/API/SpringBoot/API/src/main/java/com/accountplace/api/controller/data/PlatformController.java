@@ -1,7 +1,7 @@
-package com.accountplace.api.controller;
+package com.accountplace.api.controller.data;
 
 
-import com.accountplace.api.domains.EntitePlateform;
+import com.accountplace.api.domains.data.EntitePlateform;
 import com.accountplace.api.dto.PlateformDto;
 import com.accountplace.api.service.PlateformService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.accountplace.api.service;
 
-import com.accountplace.api.domains.EntiteMembre;
+import com.accountplace.api.domains.data.EntiteMembre;
 import com.accountplace.api.dto.MembreDto;
 import com.accountplace.api.repositories.MembreRepository;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
 package com.accountplace.api.service;
 
-import com.accountplace.api.domains.EntiteCredential;
+import com.accountplace.api.domains.data.EntiteCredential;
 import com.accountplace.api.dto.CredentialDto;
 import com.accountplace.api.dto.Email;
 import com.accountplace.api.repositories.CredentialRepository;

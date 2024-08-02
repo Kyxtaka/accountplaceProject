@@ -1,6 +1,6 @@
 package com.accountplace.api.service;
 
-import com.accountplace.api.domains.EntiteGroupe;
+import com.accountplace.api.domains.data.EntiteGroupe;
 import com.accountplace.api.dto.GroupDto;
 import com.accountplace.api.repositories.GroupRepository;
 import jakarta.persistence.EntityNotFoundException;
