@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/membre")
+@RequestMapping("api/data/membre")
 public class MembreController {
     @Autowired
     private MembreService membreService;
