@@ -1,6 +1,6 @@
-package com.accountplace.api.controller;
+package com.accountplace.api.controller.data;
 
-import com.accountplace.api.domains.EntiteMembre;
+import com.accountplace.api.domains.data.EntiteMembre;
 import com.accountplace.api.dto.MembreDto;
 import com.accountplace.api.service.MembreService;
 import org.springframework.beans.factory.annotation.Autowired;

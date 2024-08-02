@@ -1,9 +1,8 @@
-package com.accountplace.api.controller;
+package com.accountplace.api.controller.data;
 
-import com.accountplace.api.domains.EntiteAccount;
+import com.accountplace.api.domains.data.EntiteAccount;
 import com.accountplace.api.dto.AccountDto;
 import com.accountplace.api.service.AccountService;
-import com.accountplace.api.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

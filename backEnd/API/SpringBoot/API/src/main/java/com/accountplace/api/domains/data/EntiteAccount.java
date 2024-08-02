@@ -1,5 +1,4 @@
-package com.accountplace.api.domains;
-
+package com.accountplace.api.domains.data;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,21 +9,28 @@ import lombok.ToString;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "groupe")
 @Getter
 @Setter
+@Table(name = "account")
 @NoArgsConstructor
 @ToString
-public class EntiteGroupe implements Serializable {
+public class EntiteAccount implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "nom", nullable = false)
-    private String nom;
+    @Column(name = "mail", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "username", nullable = false, unique = true)
+    private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "privilege")
+    private String privileges;
+
 
 }
