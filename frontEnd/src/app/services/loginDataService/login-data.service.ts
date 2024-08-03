@@ -1,16 +1,18 @@
 import { Injectable,  } from '@angular/core';
 import { BehaviorSubject,Observable } from 'rxjs';
 
-enum Privilege {
+export enum Privilege {
   USER = "user",
   ADMIN = "admin"
 }
-interface UserData {
+
+export interface UserData {
   userId: number,
   username: string,
   email: string,
   privilege: Privilege 
 }
+
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +36,18 @@ export class LoginDataService {
   public getCurrentUserData(): UserData | null {
     return this.userDataSubject.getValue();
   }
-  
-  public userData = new Observable<UserData|null>();
+
+  public toString(userData: UserData): string {
+    const result: string = "Attribut de valaur userData : \n" + 
+              "userId : "+ userData.userId + "\n" + 
+              "username : " + userData.username + "\n" +
+              "email : " + userData.email + "\n" +
+              "privilege : " + userData.privilege;
+    return result;
+  }
+
+  public resetValueToNull(): void{
+    this.userDataSubject.next(null);
+  }
   
 }
