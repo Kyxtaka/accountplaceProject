@@ -16,6 +16,7 @@ export class AuthService {
     const body = { identifier, password };
 
     return this.http.post(this.apiUrl, body, { headers });
-    // return this.http.get(this.apiUrl, body, { headers })
   }
 }
+
+
