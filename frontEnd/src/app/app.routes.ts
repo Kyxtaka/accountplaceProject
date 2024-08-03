@@ -1,12 +1,13 @@
 import { Routes } from '@angular/router';
-import { LoginBoxComponent } from './login-box/login-box.component';
-import { HomeGroupSelectorComponent } from './home-group-selector/home-group-selector.component';
-import { AppComponent } from './app.component';
+import { LoginBoxComponent } from './components/login/login-box.component';
+import { IndexComponent } from './components/index/index.component';
+import { HomeComponent } from './components/home/home.component';
+import { AppComponent } from './components/app-component/app.component';
 
 export const routes: Routes = [
     {
-        path: 'index',
-        component: AppComponent
+        path: '',
+        component: IndexComponent
     },
     {
         path: 'login',
@@ -14,6 +15,6 @@ export const routes: Routes = [
     },
     {
         path: 'home',
-        component: HomeGroupSelectorComponent
+        component: HomeComponent
     },
 ];

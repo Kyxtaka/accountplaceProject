@@ -3,6 +3,7 @@ package com.accountplace.api.controller.service;
 
 import com.accountplace.api.domains.data.EntiteAccount;
 import com.accountplace.api.domains.util.LoginForm;
+import com.accountplace.api.dto.AccountDto;
 import com.accountplace.api.dto.Email;
 import com.accountplace.api.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class AuthLoginController {
     private AccountService accountService;
 
     @PostMapping("/login")
-    public boolean login(@RequestBody LoginForm login) {
-        boolean result = false;
+    public AccountDto login(@RequestBody LoginForm login) {
+        AccountDto result = null;
         Email tmpEmail = new Email(login.getIdentifier());
         boolean isEmail = tmpEmail.isValid();
         try {
@@ -28,7 +29,8 @@ public class AuthLoginController {
             } else {
                 foundAccount = accountService.getAccountByUsername(login.getIdentifier());
             }
-            result = foundAccount.getPassword().equals(login.getPassword());
+            boolean checking = foundAccount.getPassword().equals(login.getPassword());
+            if (checking) {result = accountService.getAccountDtoById(foundAccount.getId());}
         } catch (Exception e) {
             ResponseEntity.status(500).body(e.getMessage());
         }
