@@ -5,6 +5,7 @@ import com.accountplace.api.dto.CredentialDto;
 import com.accountplace.api.dto.Email;
 import com.accountplace.api.service.CredentialService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -106,6 +107,7 @@ public class CredentialController {
             credentialDto = credentialService.getCredentialDtoById(id);
         } catch (Exception e) {
             ResponseEntity.notFound().build();
+//          ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         return credentialDto;
     }
