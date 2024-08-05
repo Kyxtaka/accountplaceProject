@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GroupsapceComponent } from './groupsapce.component';
+import { GroupsComponent } from './groups.component';
 
-describe('GroupsapceComponent', () => {
-  let component: GroupsapceComponent;
-  let fixture: ComponentFixture<GroupsapceComponent>;
+describe('GroupsComponent', () => {
+  let component: GroupsComponent;
+  let fixture: ComponentFixture<GroupsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GroupsapceComponent]
+      imports: [GroupsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GroupsapceComponent);
+    fixture = TestBed.createComponent(GroupsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

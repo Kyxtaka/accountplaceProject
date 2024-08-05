@@ -18,6 +18,7 @@ export interface Credential {
   id: number,
   email: string,
   identifier: number,
+  password: string,
   a2f: boolean,
   platformId: number,
   groupId: number
@@ -49,18 +50,19 @@ export class DataService {
     return this.http.get(this.apiUrl+"/user/dto/"+this.global.getCurrentUserData()?.userId)
   }
 
-  retriveGroup(groupId:number): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  retrieveGroup(groupId:number): Observable<any> {
     const params = new HttpParams().set("id", groupId);
     return this.http.get(this.apiUrl+"/group/dto",{ params });
   }
 
-  retriveCredential(credentialId:number): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  retrieveCredential(credentialId:number): Observable<any> {
     const params = new HttpParams().set("id", credentialId);
-    return this.http.get(this.apiUrl+"/credential/dto", { headers, params });
-
+    return this.http.get(this.apiUrl+"/credential/dto", { params });
   }
 
+  retrieveGroupCredAssociation(groupId:number): Observable<any> {
+    const params = new HttpParams().set('groupId', groupId)
+    return this.http.get(this.apiUrl+"/membre/byGroupId", { params });
+  }
 
 }

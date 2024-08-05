@@ -1,15 +1,80 @@
 <p>home works!</p>
-<div class="container">
-    <div class="box">
-        <h2>Welcome {{userName}}</h2>
-        <h4>Please select credential group</h4>
-        <ul>
-            <div class="groupItem" *ngFor="let group of groupsArray">
-                <li>
-                    <h5 class="itemTitle">Group : {{group.name}} </h5>
-                    <button class="redirect" (click)="redirect(group.id)"> {{group.name}}</button>
-                </li>
+<div class="app-home">
+    <header class="app-header" >
+        <div class="app-header-logo">
+            <div class="app-logo">
+                <span class="logo-icon">
+                    <img src="" alt="">
+                </span>
             </div>
-        </ul>
+            <h1 class="logo-title">
+                <span>The Sharing Place</span>
+                <span>Hikarizsu</span>
+            </h1>
+        </div>
+        <div class="app-header-navigation">
+            <div class="tabs">
+                <a href="">Overview</a>
+                <a href="">Groups</a>
+                <a href="">Account</a>
+                <a href="">System</a>
+                <a href="">Setings</a>
+            </div>
+        </div>
+        <div class="app-header-actions">
+            <button class="user-profile">
+                <span>Name Name</span>
+                <span>
+                    <img src="" alt="">
+                </span>
+            </button>
+            <div class="app-header-actions-buttons">
+				<button class="icon-button large">
+					<i class="ph-magnifying-glass"></i>
+				</button>
+                <button class="icon-button large">
+					<i class="ph-bell"></i>
+				</button>
+            </div>
+        </div>
+        <div class="app-header-mobile">
+			<button class="icon-button large">
+				<i class="ph-list"></i>
+			</button>
+		</div>
+    </header>
+    <div class="app-body">
+		<div class="app-body-navigation">
+			<nav class="navigation">
+				<a href="#">
+					<i class="ph-browsers"></i>
+					<span>Dashboard</span>
+				</a>
+				<a href="#">
+					<i class="ph-check-square"></i>
+					<span>Scheduled</span>
+				</a>
+				<a href="#">
+					<i class="ph-swap"></i>
+					<span>Transfers</span>
+				</a>
+				<a href="#">
+					<i class="ph-file-text"></i>
+					<span>Templates</span>
+				</a>
+				<a href="#">
+					<i class="ph-globe"></i>
+					<span>SWIFT</span>
+				</a>
+				<a href="#">
+					<i class="ph-clipboard-text"></i>
+					<span>Exchange</span>
+				</a>
+			</nav>
+        </div>
     </div>
 </div>
+
+
+
+<router-outlet></router-outlet>
