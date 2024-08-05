@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { LoginDataService, UserData, Privilege} from '../../services/loginDataService/login-data.service';
-import { AuthService } from '../../services/authService/auth.service';
+import { Global } from '../../services/global/global.service';
+import { UserData, Privilege } from '../../services/data/data.service'
+import { AuthService } from '../../services/auth/auth.service';
 import { RouterOutlet, Router } from '@angular/router';
 
 @Component({
@@ -15,10 +16,10 @@ import { RouterOutlet, Router } from '@angular/router';
 export class LoginBoxComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private loginDataService: LoginDataService) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private global: Global) {}
 
   ngOnInit(): void {
-    if (this.loginDataService.getCurrentUserData() != null) {
+    if (this.global.getCurrentUserData() != null) {
       this.router.navigate(['/home'])
     }
     this.loginForm = this.formBuilder.group({
@@ -38,8 +39,8 @@ export class LoginBoxComponent implements OnInit {
             let priv: Privilege = Privilege.USER;
             if (response["privilege"] == "admin") {priv = Privilege.ADMIN};
             const userData: UserData = {userId: response["id"],username: response["username"], email: response["email"]["mailAddress"], privilege: priv};
-            this.loginDataService.updateUserData(userData);
-            console.log(this.loginDataService.getCurrentUserData());
+            this.global.updateUserData(userData);
+            console.log(this.global.getCurrentUserData());
             this.router.navigate(['/home'])
           }else {
             console.log("Pas de compte utilisateur");

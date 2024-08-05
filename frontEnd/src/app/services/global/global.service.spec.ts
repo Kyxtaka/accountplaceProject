@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LoginDataService } from './login-data.service';
+import { Global } from './global.service';
 
 describe('LoginDataService', () => {
-  let service: LoginDataService;
+  let service: Global;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LoginDataService);
+    service = TestBed.inject(Global);
   });
 
   it('should be created', () => {

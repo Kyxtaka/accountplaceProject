@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
-import { LoginDataService, Privilege, UserData } from '../../services/loginDataService/login-data.service';
-import { DataService, Group } from '../../services/data/data.service';
+import { Router, RouterOutlet } from '@angular/router';
+import { Global } from '../../services/global/global.service';
+import { DataService, Group} from '../../services/data/data.service';
 import { error } from 'console';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +11,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-home',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    RouterOutlet
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -22,14 +23,16 @@ export class HomeComponent implements OnInit{
   userName: string = ""
   selectedGroup: number | null = null;
 
-  constructor(private router:Router, private loginDataService: LoginDataService, private dataService: DataService) {}
+  constructor(private router:Router, private global: Global, private dataService: DataService) {}
 
   redirect(groupId:number): void {
-    console.log("should redirect into group :", this.groupsArray[groupId].name, "component")
+    this.global.updateSelectedGroupId(groupId)
+    console.log("should redirect into group :", this.groupsArray[groupId].name, "component");
+    this.router.navigate(['/group']);
   }
 
   ngOnInit(): void {
-    if (this.loginDataService.getCurrentUserData() == null) {
+    if (this.global.getCurrentUserData() == null) {
       this.router.navigate(['/login'])
     }
     

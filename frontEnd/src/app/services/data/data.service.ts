@@ -1,13 +1,38 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LoginDataService, UserData } from '../loginDataService/login-data.service';
+import { Global } from '../global/global.service';
+
+export interface UserData {
+  userId: number,
+  username: string,
+  email: string,
+  privilege: Privilege 
+}
+export interface CredAssociation {
+  groupId: number,
+  credId: number
+};
+
+export interface Credential {
+  id: number,
+  email: string,
+  identifier: number,
+  a2f: boolean,
+  platformId: number,
+  groupId: number
+};
 
 export interface Group {
   id: number,
   name: string,
   description: string,
   password: string,
+};
+
+export enum Privilege {
+  USER = "user",
+  ADMIN = "admin"
 };
 
 @Injectable({
@@ -18,10 +43,10 @@ export class DataService {
 
   private apiUrl = "http://localhost:8080/api/data"
 
-  constructor(private http: HttpClient, private loginDataService: LoginDataService) { }
+  constructor(private http: HttpClient, private global: Global) { }
 
   retrieveUserData(): Observable<any> {
-    return this.http.get(this.apiUrl+"/user/dto/"+this.loginDataService.getCurrentUserData()?.userId)
+    return this.http.get(this.apiUrl+"/user/dto/"+this.global.getCurrentUserData()?.userId)
   }
 
   retriveGroup(groupId:number): Observable<any> {
