@@ -6,7 +6,7 @@ import { BehaviorSubject,Observable } from 'rxjs';
   providedIn: 'root'
 })
 
-export class Global {
+export class GlobalService {
   private userDataSubject: BehaviorSubject<UserData | null>;
   public userData$: Observable<UserData | null>;
   private selectedGroupIdSubject: BehaviorSubject<number | null>

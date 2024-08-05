@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { Global } from '../../services/global/global.service';
+import { GlobalService } from '../../services/global/global.service';
 import { DataService, Group} from '../../services/data/data.service';
 import { error } from 'console';
 import { CommonModule } from '@angular/common';
@@ -23,16 +23,16 @@ export class HomeComponent implements OnInit{
   userName: string = ""
   selectedGroup: number | null = null;
 
-  constructor(private router:Router, private global: Global, private dataService: DataService) {}
+  constructor(private router:Router, private globalService: GlobalService, private dataService: DataService) {}
 
   redirect(groupId:number): void {
-    this.global.updateSelectedGroupId(groupId)
+    this.globalService.updateSelectedGroupId(groupId)
     console.log("should redirect into group :", this.groupsArray[groupId].name, "component");
     this.router.navigate(['/group']);
   }
 
   ngOnInit(): void {
-    if (this.global.getCurrentUserData() == null) {
+    if (this.globalService.getCurrentUserData() == null) {
       this.router.navigate(['/login'])
     }
     

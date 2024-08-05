@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Global } from '../global/global.service';
+import { GlobalService } from '../global/global.service';
 
 export interface UserData {
   userId: number,
@@ -43,7 +43,7 @@ export class DataService {
 
   private apiUrl = "http://localhost:8080/api/data"
 
-  constructor(private http: HttpClient, private global: Global) { }
+  constructor(private http: HttpClient, private global: GlobalService) { }
 
   retrieveUserData(): Observable<any> {
     return this.http.get(this.apiUrl+"/user/dto/"+this.global.getCurrentUserData()?.userId)

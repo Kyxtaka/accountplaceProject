@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Global } from '../../services/global/global.service';
+import { GlobalService } from '../../services/global/global.service';
 import { Router } from '@angular/router';
 import { DataService, CredAssociation } from '../../services/data/data.service';
 
@@ -13,11 +13,11 @@ import { DataService, CredAssociation } from '../../services/data/data.service';
 
 export class GroupsapceComponent implements OnInit{
 
-  groupId: number | null = this.global.getCurrentSelectedGroupId()
+  groupId: number | null = this.globalService.getCurrentSelectedGroupId()
   credAssociation: CredAssociation | null = null;
 
   constructor(
-    private global: Global,
+    private globalService: GlobalService,
     private router: Router,
     private dataService: DataService
   ) {}
