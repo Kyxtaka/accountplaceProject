@@ -1,30 +1,19 @@
 import { Injectable,  } from '@angular/core';
+import { UserData } from '../data/data.service';
 import { BehaviorSubject,Observable } from 'rxjs';
-
-export enum Privilege {
-  USER = "user",
-  ADMIN = "admin"
-}
-
-export interface UserData {
-  userId: number,
-  username: string,
-  email: string,
-  privilege: Privilege 
-}
-
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class LoginDataService {
-  
+export class GlobalService {
   private userDataSubject: BehaviorSubject<UserData | null>;
   public userData$: Observable<UserData | null>;
+  private selectedGroupIdSubject: BehaviorSubject<number | null>
 
   constructor() { 
     this.userDataSubject = new BehaviorSubject<UserData | null>(null);
+    this.selectedGroupIdSubject = new BehaviorSubject<number | null>(null);
     this.userData$ = this.userDataSubject.asObservable();
   }
 
@@ -35,6 +24,14 @@ export class LoginDataService {
   
   public getCurrentUserData(): UserData | null {
     return this.userDataSubject.getValue();
+  }
+
+  public updateSelectedGroupId(data: number | null) {
+    this.selectedGroupIdSubject.next(data);
+  }
+
+  public getCurrentSelectedGroupId(): number | null {
+    return this.selectedGroupIdSubject.getValue();
   }
 
   public toString(userData: UserData): string {

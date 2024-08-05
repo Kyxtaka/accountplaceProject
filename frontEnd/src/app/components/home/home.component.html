@@ -1,1 +1,15 @@
 <p>home works!</p>
+<div class="container">
+    <div class="box">
+        <h2>Welcome {{userName}}</h2>
+        <h4>Please select credential group</h4>
+        <ul>
+            <div class="groupItem" *ngFor="let group of groupsArray">
+                <li>
+                    <h5 class="itemTitle">Group : {{group.name}} </h5>
+                    <button class="redirect" (click)="redirect(group.id)"> {{group.name}}</button>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>
