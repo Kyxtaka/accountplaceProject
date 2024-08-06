@@ -1,9 +1,10 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { GlobalService } from '../../../../services/global/global.service';
 import { Router, RouterOutlet } from '@angular/router';
-import { DataService, CredAssociation, Credential } from '../../../../services/data/data.service';
+import { DataService, CredAssociation, Credential, Group } from '../../../../services/data/data.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { error } from 'console';
 
 @Component({
   selector: 'app-credentials',
@@ -13,9 +14,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './credentials.component.css'
 })
 export class CredentialsComponent implements OnInit {
-  private groupId: number | null =  null;
+  //fonctionnement
+  private groupId: number | boolean =  false;
+  private credAssocArray: CredAssociation[] = [];
+  private allGroup: Group[] = [];
+
+  //affichage
   public credentials: Credential[] = [];
-  private credAssocArray: CredAssociation[] = []
+
 
   constructor(
     private globalService: GlobalService,
@@ -23,6 +29,7 @@ export class CredentialsComponent implements OnInit {
     private router: Router
   ) {}
 
+  //ajout des donner dans la liste credentials
   private addToCredentials(response: Observable<any>): void {
     response.subscribe({
         next: (data) => {
@@ -47,24 +54,37 @@ export class CredentialsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.groupId = this.globalService.getCurrentSelectedGroupId();
-    if (this.groupId == null) {this.router.navigate(['/home'])}
-    this.dataService.retrieveGroupCredAssociation(this.groupId!).subscribe({
-      next: (response) => {
-        response.forEach((element: { [x: string]: any; }) => {
-          const assoc: CredAssociation = {groupId: element['groupId'], credId: element['accountId']};
-          this.credAssocArray.push(assoc);
-          console.log("test credAssoc", assoc);
-        });
-        this.credAssocArray.forEach( assoc => {
-          this.addToCredentials(this.dataService.retrieveCredential(assoc.credId));
-        })
-        console.log("cred Array:", this.credentials);
+
+    this.groupId = this.globalService.getCurrentSelectedGroupId()!;
+    if (this.globalService == null) {this.router.navigate(['/home'])}
+    
+    this.globalService.allGroup$.subscribe({
+      next: (data) => {
+        this.allGroup = data;
       },
       error: (error) => {
-        console.log("Error while retrieving API response:", error);
       }
     })
+
+    this.allGroup.forEach( (group: Group) => {
+      this.dataService.retrieveGroupCredAssociation(group.id).subscribe({
+        next: (response) => {
+          response.forEach((element: { [x: string]: any; }) => {
+            const assoc: CredAssociation = {groupId: element['groupId'], credId: element['accountId']};
+            this.credAssocArray.push(assoc);
+            console.log("test credAssoc", assoc);
+          });
+          this.credAssocArray.forEach( assoc => {
+            this.addToCredentials(this.dataService.retrieveCredential(assoc.credId));
+          })
+          console.log("cred Array:", this.credentials);
+        },
+        error: (error) => {
+          console.log("Error while retrieving API response:", error);
+        }
+      })
+    });
+    
   }
   // this.credAssocArray
 }
