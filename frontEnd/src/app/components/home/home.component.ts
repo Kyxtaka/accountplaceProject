@@ -26,13 +26,18 @@ export class HomeComponent implements OnInit{
   ) {}
 
   username: string = this.globalService.getCurrentUserData()!.username;
+
   ngOnInit(): void {
+
+    //redirection au login l'utilisateur ne s'est pas connecter
     if (this.globalService.getCurrentUserData() == null) {
       this.router.navigate(['/login'])
     }
 
+    //recuperation donnees utilisateur pour exploitation
     this.dataService.retrieveUserData().subscribe({
       next: (response) => {
+            // ajout des groups dans le global
             response["groups"].forEach((element: { [x: string]: any; }) => {
             let tempGroup = {
               id: element["id"], 
@@ -40,10 +45,12 @@ export class HomeComponent implements OnInit{
               description: element["description"], 
               password: element["password"]
             };
-            this.globalService.updateGroupsArray(tempGroup);
+            this.globalService.updateGroupsArray(tempGroup); 
           });
           console.log("API repsonse 'groups' :", this.globalService.getCurrentGroupsArray());
           console.log("state lenght:", this.globalService.getCurrentGroupsArray().length);
+
+          // affiche les group dans la console pour verifier le resultat
           for (let i=0; i < this.globalService.getCurrentGroupsArray().length ; i++) {
             this.dataService.retrieveGroup(this.globalService.getCurrentGroupsArray()[i].id).subscribe({
               next: (response) => {
@@ -54,6 +61,8 @@ export class HomeComponent implements OnInit{
               }
             });
           }
+
+          // ajout des association {groupId, credId} ==> pour la gestion des comptes
           this.globalService.getCurrentGroupsArray().forEach( element => {
             this.dataService.retrieveGroupCredAssociation(element.id).subscribe({
               next: (response) => {
@@ -68,6 +77,7 @@ export class HomeComponent implements OnInit{
               }
             })
           });
+
       },
       error: (error) => {
           console.log("Error while retrieving groups from the API:", error );
