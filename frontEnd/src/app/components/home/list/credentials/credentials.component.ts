@@ -2,7 +2,6 @@ import { Component, OnInit, NgModule } from '@angular/core';
 import { GlobalService } from '../../../../services/global/global.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { DataService, CredAssociation, Credential } from '../../../../services/data/data.service';
-import { error } from 'console';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
@@ -67,4 +66,5 @@ export class CredentialsComponent implements OnInit {
       }
     })
   }
+  // this.credAssocArray
 }

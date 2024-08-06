@@ -2,7 +2,6 @@ import { Component, OnInit} from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { GlobalService } from '../../../../services/global/global.service';
 import { DataService, Group } from '../../../../services/data/data.service';
-import { error } from 'console';
 import { CommonModule } from '@angular/common';
 
 
@@ -13,7 +12,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './groups.component.html',
   styleUrl: './groups.component.css'
 })
-export class GroupsComponent {
+export class GroupsComponent  implements OnInit{
   groupsArray: Group[] = []
   userName: string = ""
   selectedGroup: number | null = null;
