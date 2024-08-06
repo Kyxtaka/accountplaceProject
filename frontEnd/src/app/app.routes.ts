@@ -4,11 +4,12 @@ import { IndexComponent } from './components/index/index.component';
 import { HomeComponent } from './components/home/home.component';
 import { GroupsComponent } from './components/home/list/groups/groups.component';
 import { CredentialsComponent } from './components/home/list/credentials/credentials.component';
+import { OverviewComponent } from './components/home/overview/overview.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: IndexComponent
+        component: LoginBoxComponent
     },
     {
         path: 'login',
@@ -19,13 +20,17 @@ export const routes: Routes = [
         component: HomeComponent,
         children: [
             {
-                path: 'list/group',
+                path: 'groups',
                 component: GroupsComponent
 
             },
             {
-                path: 'list/credentials',
+                path: 'credentials',
                 component: CredentialsComponent
+            },
+            {
+                path: 'overview',
+                component: OverviewComponent
             },
         ]
     },

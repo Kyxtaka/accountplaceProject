@@ -1,29 +1,27 @@
-<p>home works!</p>
-<div class="app-home">
-    <header class="app-header" >
+<div class="app">
+    <header class="app-header">
         <div class="app-header-logo">
-            <div class="app-logo">
-                <span class="logo-icon">
-                    <img src="" alt="">
-                </span>
+            <div class="logo">
+                <!-- <span class="logo-icon"></span>
+                <img src="../../../../public/favicon.ico" alt="ico"> -->
             </div>
-            <h1 class="logo-title">
+            <p class="logo-title">
                 <span>The Sharing Place</span>
                 <span>Hikarizsu</span>
-            </h1>
+            </p>
         </div>
         <div class="app-header-navigation">
             <div class="tabs">
-                <a href="">Overview</a>
-                <a href="">Groups</a>
-                <a href="">Account</a>
-                <a href="">System</a>
-                <a href="">Setings</a>
+                <a  routerLink="overview">Overview</a>
+                <a routerLink="groups">Groups</a>
+                <a routerLink="credentials">Account</a>
+                <a >System</a>
+                <a >Setings</a>
             </div>
         </div>
         <div class="app-header-actions">
             <button class="user-profile">
-                <span>Name Name</span>
+                <span>{{username}}</span>
                 <span>
                     <img src="" alt="">
                 </span>
@@ -46,35 +44,41 @@
     <div class="app-body">
 		<div class="app-body-navigation">
 			<nav class="navigation">
-				<a href="#">
+				<a >
 					<i class="ph-browsers"></i>
 					<span>Dashboard</span>
 				</a>
-				<a href="#">
+				<a >
 					<i class="ph-check-square"></i>
-					<span>Scheduled</span>
+					<span>Social</span>
 				</a>
-				<a href="#">
+				<a >
 					<i class="ph-swap"></i>
-					<span>Transfers</span>
+					<span>Account management</span>
 				</a>
-				<a href="#">
+				<a >
 					<i class="ph-file-text"></i>
-					<span>Templates</span>
+					<span>Contace Admin</span>
 				</a>
-				<a href="#">
+				<a >
 					<i class="ph-globe"></i>
-					<span>SWIFT</span>
+					<span>##SWIFT</span>
 				</a>
-				<a href="#">
+				<a >
 					<i class="ph-clipboard-text"></i>
-					<span>Exchange</span>
+					<span>##Exchange</span>
 				</a>
 			</nav>
+            <footer class="footer">
+				<h1>Hikarizsu<small>©</small></h1>
+				<div>
+					Hikarizsu ©<br />
+					All Rights Reserved 2021
+				</div>
+			</footer>
+        </div>
+        <div class="">
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>
-
-
-
-<router-outlet></router-outlet>
