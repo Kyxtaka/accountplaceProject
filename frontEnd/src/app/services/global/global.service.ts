@@ -1,5 +1,5 @@
 import { Injectable,  } from '@angular/core';
-import { CredAssociation, UserData, Group } from '../data/data.service';
+import { CredAssociation, UserData, Group, } from '../data/data.service';
 import { BehaviorSubject,Observable } from 'rxjs';
 
 @Injectable({
@@ -7,78 +7,68 @@ import { BehaviorSubject,Observable } from 'rxjs';
 })
 
 export class GlobalService {
+  //Login data + status
+  private isLogged: BehaviorSubject<boolean>;
   private userDataSubject: BehaviorSubject<UserData | null>;
-  private selectedGroupIdSubject: BehaviorSubject<number | null>;
-  private credAssociation: BehaviorSubject<CredAssociation[]>;
+  //exploitation Data
+  private allCredAssociationSubject: BehaviorSubject<CredAssociation[]>;
   private allGroupsSubject: BehaviorSubject<Group[]>;
+  private allCredentialDataSubject: BehaviorSubject<Credential[]>;
 
+  //Observable user
+  public isLogged$: Observable<Boolean>;
   public userData$: Observable<UserData | null>;
-  public selectedGroupId$: Observable<number | null>;
-  public credAssociation$: Observable<CredAssociation[]>;
+
+  public allCredAssociation$: Observable<CredAssociation[]>;
   public allGroup$: Observable<Group[]>;
+  public allCredential$: Observable<Credential[]>;
+ 
 
   constructor() {
-    this.credAssociation = new BehaviorSubject<CredAssociation[]>([]);
+    this.isLogged = new BehaviorSubject<boolean>(false);
     this.userDataSubject = new BehaviorSubject<UserData | null>(null);
-    this.selectedGroupIdSubject = new BehaviorSubject<number | null>(null);
+    
+    this.allCredAssociationSubject = new BehaviorSubject<CredAssociation[]>([]);
     this.allGroupsSubject = new BehaviorSubject<Group[]>([]);
+    this.allCredentialDataSubject = new BehaviorSubject<Credential[]>([]);
 
+    this.isLogged$ = this.isLogged.asObservable();
     this.userData$ = this.userDataSubject.asObservable();
-    this.selectedGroupId$ = this.selectedGroupIdSubject.asObservable();
-    this.credAssociation$ = this.credAssociation.asObservable();
+
+    this.allCredAssociation$ = this.allCredAssociationSubject.asObservable();
     this.allGroup$ = this.allGroupsSubject.asObservable();
+    this.allCredential$ = this.allCredentialDataSubject.asObservable();
   }
+
+
+  //isLogged
+  public updateSelectedGroupId(data: boolean) { this.isLogged.next(data); }
+  public getCurrentSelectedGroupId(): boolean {return this.isLogged.getValue();}
 
   // userData
-  public updateUserData(data: UserData | null): void {
-    this.userDataSubject.next(data);
-  }
+  public updateUserData(data: UserData | null): void {this.userDataSubject.next(data);}
+  public getCurrentUserData(): UserData | null {return this.userDataSubject.getValue();}
+
   
-  public getCurrentUserData(): UserData | null {
-    return this.userDataSubject.getValue();
-  }
 
-  //GroupID
-  public updateSelectedGroupId(data: number | null) {
-    this.selectedGroupIdSubject.next(data);
-  }
-
-  public getCurrentSelectedGroupId(): number | null {
-    return this.selectedGroupIdSubject.getValue();
-  }
-
-  //CredAssocArray
-  public getCurrentCredAssocArray(): CredAssociation[] {
-    return this.credAssociation.getValue();
-  }
-
+  //CredAssoc
+  public getCurrentCredAssocArray(): CredAssociation[] {return this.allCredAssociationSubject.getValue();}
   public updateCredAssocArray(data: CredAssociation): void {
-    const tmp: CredAssociation[] = this.credAssociation.getValue();
-    tmp.push(data)
-    this.credAssociation.next(tmp);
+    const tmp: CredAssociation[] = this.allCredAssociationSubject.getValue();
+    tmp.push(data);
+    this.allCredAssociationSubject.next(tmp);
   }
 
-  public getCurrentGroupsArray(): Group[] {
-    return this.allGroupsSubject.getValue();
-  }
-
+  //Groups
+  public getCurrentGroupsArray(): Group[] {return this.allGroupsSubject.getValue();}
   public updateGroupsArray(data: Group): void {
     const tmp: Group[] = this.allGroupsSubject.getValue();
     tmp.push(data)
     this.allGroupsSubject.next(tmp);
   }
 
-  // public toString(userData: UserData): string {
-  //   const result: string = "Attribut de valaur userData : \n" + 
-  //             "userId : "+ userData.userId + "\n" + 
-  //             "username : " + userData.username + "\n" +
-  //             "email : " + userData.email + "\n" +
-  //             "privilege : " + userData.privilege;
-  //   return result;
-  // }
-
-  public resetValueToNull(): void{
-    this.userDataSubject.next(null);
+  //initalizer ==> 
+  public init(): void {
+      const userData: UserData = this.userDataSubject.getValue()!;
   }
-  
 }

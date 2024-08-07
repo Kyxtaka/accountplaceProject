@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+
 :root {
 	--c-gray-900: #000000;
 	--c-gray-800: #1f1f1f;
@@ -28,8 +29,6 @@ body {
 	background-color: var(--c-gray-900);
 	color: var(--c-text-primary);
 	display: flex;
-	padding-top: 3vw;
-	padding-bottom: 3vw;
 	justify-content: center;
 }
 
@@ -64,10 +63,11 @@ a {
 }
 
 .app {
-	min-height: 80vh;
-	width: 95%;
+	min-height: 100vh;
+	width: 100%;
 	max-width: 1600px;
-	background-color: var(--c-gray-800);
+	/* background-color: var(--c-gray-800); */
+	background-image: url("../../../IMAGE/background.jpg");
 	padding: 2vw 4vw 6vw;
 	display: flex;
 	flex-direction: column;
@@ -847,9 +847,17 @@ input,
 select,
 a,
 textarea,
+
 button {
 	&:focus {
 		outline: 0;
 		box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px var(--c-gray-300);
 	}
+}
+
+.full-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }

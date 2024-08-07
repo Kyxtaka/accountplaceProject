@@ -1,15 +1,46 @@
 import { Routes } from '@angular/router';
 import { LoginBoxComponent } from './components/login/login-box.component';
-import { IndexComponent } from './components/index/index.component';
 import { HomeComponent } from './components/home/home.component';
 import { GroupsComponent } from './components/home/list/groups/groups.component';
 import { CredentialsComponent } from './components/home/list/credentials/credentials.component';
 import { OverviewComponent } from './components/home/overview/overview.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { PresentationComponent } from './components/welcome/presentation/presentation.component';
+import { AboutmeComponent } from './components/welcome/aboutme/aboutme.component';
+import { GoalsComponent } from './components/welcome/goals/goals.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: LoginBoxComponent
+        redirectTo: '/index',  // Redirection de la route vide vers /index
+        pathMatch: 'full'  // Assure que la redirection se fait pour la route complète
+    },
+    {
+        path: 'index',
+        component: WelcomeComponent,
+        children: [
+            {
+                path: 'presentation',
+                component: PresentationComponent
+            },
+            {
+                path: 'aboutme',
+                component: AboutmeComponent
+            },
+            {
+                path: 'goals',
+                component: GoalsComponent
+            },
+            {
+                path: '',
+                redirectTo: 'presentation',
+                pathMatch: 'full',
+            },
+            {
+                path: '**',  // Capture toutes les sous-routes non définies
+                redirectTo: 'presentation',  // Redirige vers /index
+            },
+        ]
     },
     {
         path: 'login',
@@ -34,4 +65,8 @@ export const routes: Routes = [
             },
         ]
     },
+    {
+        path: '**',  // Capture toutes les routes non définies
+        redirectTo: '/index'  // Redirige vers /index
+    }
 ];

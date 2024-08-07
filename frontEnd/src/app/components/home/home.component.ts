@@ -30,9 +30,14 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
 
     //redirection au login l'utilisateur ne s'est pas connecter
-    if (this.globalService.getCurrentUserData() == null) {
-      this.router.navigate(['/login'])
+    try {
+      if (this.globalService.getCurrentUserData() == null) {
+        this.router.navigate(['/login']);
+      }
+    } catch {
+      this.router.navigate(['/']);
     }
+    
 
     //recuperation donnees utilisateur pour exploitation
     this.dataService.retrieveUserData().subscribe({
@@ -70,24 +75,20 @@ export class HomeComponent implements OnInit{
                   const credTmp: CredAssociation = {groupId: element['groupId'], credId: element['accountId']};
                   this.globalService.updateCredAssocArray(credTmp);
                   console.log("Global credArray:", this.globalService.getCurrentCredAssocArray());
-                }) 
+                })
+                
               },
               error: (error) => {
                   console.log("Error while making credArray:", error);
               }
             })
           });
-
       },
       error: (error) => {
           console.log("Error while retrieving groups from the API:", error );
       }
     });
-    
-    
-
+    this.router.navigate(['/home/overview']); 
   }
-
-  
 }
 

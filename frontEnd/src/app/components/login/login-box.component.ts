@@ -37,11 +37,12 @@ export class LoginBoxComponent implements OnInit {
           console.log('Authentification réussie', response);
           if (response != null) {
             let priv: Privilege = Privilege.USER;
-            if (response["privilege"] == "admin") {priv = Privilege.ADMIN};
+            if (response["privilege"] == "admin") {priv = Privilege.ADMIN}; //recuperation privileges
             const userData: UserData = {userId: response["id"],username: response["username"], email: response["email"]["mailAddress"], privilege: priv};
             this.globalService.updateUserData(userData);
             console.log(this.globalService.getCurrentUserData());
             this.router.navigate(['/home'])
+            this.globalService.init(); //initialisation de toutes les donnes apres authentification
           }else {
             console.log("Pas de compte utilisateur");
           }
