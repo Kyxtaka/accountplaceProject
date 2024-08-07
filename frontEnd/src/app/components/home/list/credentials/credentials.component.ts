@@ -29,6 +29,18 @@ export class CredentialsComponent implements OnInit {
     private router: Router
   ) {}
 
+  private isCredInArray(array: Credential[], cred: Credential): boolean {
+    return array.some( data => 
+      data.id === cred.id &&
+      data.email === cred.email &&
+      data.identifier == cred.identifier &&
+      data.password === cred.password &&
+      data.groupId === cred.groupId &&
+      data.platformId === cred.platformId &&
+      data.a2f === cred.a2f
+    )
+  }
+
   //ajout des donner dans la liste credentials
   private addToCredentials(response: Observable<any>): void {
     response.subscribe({
@@ -42,7 +54,9 @@ export class CredentialsComponent implements OnInit {
                 groupId: data['groupId'],
                 platformId: data['plateformId']
             };
-            this.credentials.push(cred);
+            if (!this.isCredInArray(this.credentials, cred)) {
+              this.credentials.push(cred);
+            }
         },
         error: (error) => {
             console.error("Error processing response:", error);
@@ -54,8 +68,7 @@ export class CredentialsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.groupId = this.globalService.getCurrentSelectedGroupId()!;
+    // this.groupId = this.globalService.getCurrentSelectedGroupId()!;
     if (this.globalService == null) {this.router.navigate(['/home'])}
     
     this.globalService.allGroup$.subscribe({
@@ -86,5 +99,4 @@ export class CredentialsComponent implements OnInit {
     });
     
   }
-  // this.credAssocArray
 }

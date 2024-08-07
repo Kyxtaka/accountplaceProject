@@ -1,8 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+	--c-gray-900: #000000;
+	--c-gray-800: #1f1f1f;
+	--c-gray-700: #2e2e2e;
+	--c-gray-600: #313131;
+	--c-gray-500: #969593;
+	--c-gray-400: #a6a6a6;
+	--c-gray-300: #bdbbb7;
+	--c-gray-200: #f1f1f1;
+	--c-gray-100: #ffffff;
+
+	--c-green-500: #45ffbc;
+	--c-olive-500: #e3ffa8;
+
+	--c-white: var(--c-gray-100);
+
+	--c-text-primary: var(--c-gray-100);
+	--c-text-secondary: var(--c-gray-200);
+	--c-text-tertiary: var(--c-gray-500);
+}
+
 *,
 *:before,
 *:after {
 	box-sizing: border-box;
   	color: white;
+    font-family: sans-serif;
 }
 
 .main-content {
@@ -106,7 +130,7 @@ footer {
 	display: flex;
 	justify-content: space-between;
 	color: var(--c-text-tertiary);
-	border-bottom: 1px solid var(--c-gray-600);
+	
 
 	a {
 		padding-top: 1rem;
@@ -117,11 +141,32 @@ footer {
 		border-top: 2px solid transparent;
 		display: inline-flex;
 		transition: 0.25s ease;
+        border-bottom: 1px solid grey;
 		&.active,
 		&:hover,
 		&:focus {
 			color: var(--c-text-primary);
 			border-color: var(--c-text-primary);
 		}
+	}
+}
+
+.app-header-navigation-redirector {
+    display: flex;
+    justify-content: flex-end; /* S'assure que le bouton se place à droite */
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.redirector-link {
+    margin: 1rem;
+}
+
+button {
+	&:focus {
+		outline: 0;
+		box-shadow: 0 0 0 2px var(--c-gray-800), 0 0 0 4px var(--c-gray-300);
 	}
 }

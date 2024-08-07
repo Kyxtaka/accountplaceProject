@@ -847,6 +847,7 @@ input,
 select,
 a,
 textarea,
+
 button {
 	&:focus {
 		outline: 0;

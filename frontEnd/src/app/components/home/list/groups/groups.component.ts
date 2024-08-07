@@ -24,7 +24,7 @@ export class GroupsComponent  implements OnInit{
   ) {}
 
   redirect(groupId:number): void {
-    this.globalService.updateSelectedGroupId(groupId)
+    // this.globalService.updateSelectedGroupId(groupId)
     console.log("should redirect into group :", this.groupsArray[groupId].name, "component");
     this.router.navigate(['/group']);
   }

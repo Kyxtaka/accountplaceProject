@@ -14,17 +14,16 @@
                     <a routerLink="goals">My Goals</a>
                 </div>
                 <div class="app-header-navigation-commom" *ngIf="true">
-                    <a routerLink="home">My Space</a>
+                    <a routerLink="/home">My Space</a>
                 </div>
-                <a router=""></a>
             </div>
         </div>
         <div class="app-header-navigation-redirector">
-            <a routerLink="/login">Log in</a>
-            <div class="redirector-button">
-                <a id="register" routerLink="register">Register</a>
-                <a id="support" routerLink="Support">Support</a>
-            </div>
+            <!-- <div class="redirector-button"> -->
+                <a routerLink="/login" class="redirector-link">Log in</a>
+                <a id="register" class="redirector-link" routerLink="register">Register</a>
+                <a id="support"  class="redirector-link" routerLink="Support">Support</a>
+            <!-- </div> -->
         </div>
     </div>
     <div class="app-body">
