@@ -13,7 +13,7 @@ export class GlobalService {
   //exploitation Data
   private allCredAssociationSubject: BehaviorSubject<CredAssociation[]>;
   private allGroupsSubject: BehaviorSubject<Group[]>;
-  private allCredentialDataSubject: BehaviorSubject<Credential[]>;
+  // private allCredentialDataSubject: BehaviorSubject<Credential[]>;
 
   //Observable user
   public isLogged$: Observable<Boolean>;
@@ -21,7 +21,7 @@ export class GlobalService {
 
   public allCredAssociation$: Observable<CredAssociation[]>;
   public allGroup$: Observable<Group[]>;
-  public allCredential$: Observable<Credential[]>;
+  // public allCredential$: Observable<Credential[]>;
  
 
   constructor() {
@@ -30,14 +30,14 @@ export class GlobalService {
     
     this.allCredAssociationSubject = new BehaviorSubject<CredAssociation[]>([]);
     this.allGroupsSubject = new BehaviorSubject<Group[]>([]);
-    this.allCredentialDataSubject = new BehaviorSubject<Credential[]>([]);
+    // this.allCredentialDataSubject = new BehaviorSubject<Credential[]>([]);
 
     this.isLogged$ = this.isLogged.asObservable();
     this.userData$ = this.userDataSubject.asObservable();
 
     this.allCredAssociation$ = this.allCredAssociationSubject.asObservable();
     this.allGroup$ = this.allGroupsSubject.asObservable();
-    this.allCredential$ = this.allCredentialDataSubject.asObservable();
+    // this.allCredential$ = this.allCredentialDataSubject.asObservable();
   }
 
 
@@ -55,7 +55,9 @@ export class GlobalService {
   public getCurrentCredAssocArray(): CredAssociation[] {return this.allCredAssociationSubject.getValue();}
   public updateCredAssocArray(data: CredAssociation): void {
     const tmp: CredAssociation[] = this.allCredAssociationSubject.getValue();
-    tmp.push(data);
+    if (!((data: CredAssociation) => tmp.some( elem => elem.groupId === data.groupId && elem.credId === data.credId))) {
+      tmp.push(data);
+    } 
     this.allCredAssociationSubject.next(tmp);
   }
 
@@ -63,7 +65,13 @@ export class GlobalService {
   public getCurrentGroupsArray(): Group[] {return this.allGroupsSubject.getValue();}
   public updateGroupsArray(data: Group): void {
     const tmp: Group[] = this.allGroupsSubject.getValue();
-    tmp.push(data)
+    const execute: boolean = !tmp.some( elem => 
+      elem.id === data.id &&
+      elem.name === data.name &&
+      elem.description === data.description &&
+      elem.password === data.password
+    )
+    if (execute) {tmp.push(data)}
     this.allGroupsSubject.next(tmp);
   }
 
