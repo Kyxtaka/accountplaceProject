@@ -1,5 +1,5 @@
 import { Injectable,  } from '@angular/core';
-import { CredAssociation, UserData, Group, } from '../data/data.service';
+import { CredAssociation, UserData, Group, Privilege} from '../data/data.service';
 import { BehaviorSubject,Observable } from 'rxjs';
 
 @Injectable({
@@ -42,8 +42,8 @@ export class GlobalService {
 
 
   //isLogged
-  public updateSelectedGroupId(data: boolean) { this.isLogged.next(data); }
-  public getCurrentSelectedGroupId(): boolean {return this.isLogged.getValue();}
+  public updateIsLogged(data: boolean) { this.isLogged.next(data); }
+  public getCurrentIsLogged(): boolean {return this.isLogged.getValue();}
 
   // userData
   public updateUserData(data: UserData | null): void {this.userDataSubject.next(data);}
@@ -76,7 +76,14 @@ export class GlobalService {
   }
 
   //initalizer ==> 
-  public init(): void {
-      const userData: UserData = this.userDataSubject.getValue()!;
-  }
+  // public initConnection(response: Observable<any>): void {
+  //   console.log('Authentification réussie', response);
+  //         if (response != null) {
+  //           let priv: Privilege = Privilege.USER;
+  //           if (response["privilege"] == "admin") {priv = Privilege.ADMIN}; //recuperation privileges
+  //           const userData: UserData = {userId: response["id"],username: response["username"], email: response["email"]["mailAddress"], privilege: priv};
+  //           this.globalService.updateUserData(userData);
+  //           console.log(this.globalService.getCurrentUserData());
+  //     const userData: UserData = this.userDataSubject.getValue()!;
+  // }
 }

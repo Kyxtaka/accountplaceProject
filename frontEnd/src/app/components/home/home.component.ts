@@ -19,26 +19,22 @@ import { CommonModule } from '@angular/common';
 })
 
 export class HomeComponent implements OnInit{
+
   constructor(
     private router:Router, 
     private globalService: GlobalService,
     private dataService: DataService
   ) {}
 
-  username: string = this.globalService.getCurrentUserData()!.username;
-
+  username: string = "";
+  
   ngOnInit(): void {
-
     //redirection au login l'utilisateur ne s'est pas connecter
-    try {
-      if (this.globalService.getCurrentUserData() == null) {
-        this.router.navigate(['/login']);
-      }
-    } catch {
-      this.router.navigate(['/']);
+    if (this.globalService.getCurrentUserData() == null) {
+      this.router.navigate(['/login']);
     }
+    this.username = this.globalService.getCurrentUserData()!.username;
     
-
     //recuperation donnees utilisateur pour exploitation
     this.dataService.retrieveUserData().subscribe({
       next: (response) => {

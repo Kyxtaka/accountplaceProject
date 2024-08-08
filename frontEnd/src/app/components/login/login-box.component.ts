@@ -41,8 +41,9 @@ export class LoginBoxComponent implements OnInit {
             const userData: UserData = {userId: response["id"],username: response["username"], email: response["email"]["mailAddress"], privilege: priv};
             this.globalService.updateUserData(userData);
             console.log(this.globalService.getCurrentUserData());
+            this.globalService.updateIsLogged(true);
             this.router.navigate(['/home'])
-            this.globalService.init(); //initialisation de toutes les donnes apres authentification
+            // initialisation de toutes les donnes apres authentification
           }else {
             console.log("Pas de compte utilisateur");
           }

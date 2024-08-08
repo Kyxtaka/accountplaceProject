@@ -10,20 +10,25 @@
             <div class="tabs">
                 <div class="app-header-navigation-commom">
                     <a routerLink="presentation">Presentation</a>
-                    <a routerLink="aboutme">About Me</a>
-                    <a routerLink="goals">My Goals</a>
-                </div>
-                <div class="app-header-navigation-commom" *ngIf="true">
-                    <a routerLink="/home">My Space</a>
-                </div>
+                    <a routerLink="/home" *ngIf="isLogged">My Space</a>
+                </div>       
             </div>
         </div>
-        <div class="app-header-navigation-redirector">
-            <!-- <div class="redirector-button"> -->
-                <a routerLink="/login" class="redirector-link">Log in</a>
-                <a id="register" class="redirector-link" routerLink="register">Register</a>
-                <a id="support"  class="redirector-link" routerLink="Support">Support</a>
-            <!-- </div> -->
+        <div class="app-header-actions">
+            <div class="profile">
+                <a routerLink="/login" id="redirector-link-login" *ngIf="!isLogged" >Log in</a>
+                <button class="user-profile" *ngIf="isLogged">
+                    <span>{{username}}</span>
+                    <span>
+                        <img src="" alt="">
+                    </span>
+                </button>
+            </div>
+            <div class="app-header-actions-buttons">
+                <button id="register" class="redirector-link" routerLink="register" *ngIf="!isLogged">Register</button>
+                <button id="disconect" class="redirector-link" *ngIf="isLogged">Disconect</button>
+                <button id="support"  class="redirector-link" routerLink="Support">Support</button>
+            </div>
         </div>
     </div>
     <div class="app-body">
@@ -31,8 +36,8 @@
             <router-outlet></router-outlet>
         </div>
     </div>
-    <footer>
+    <div class="footer">
         Copyright Nathan Randriatsoa
         Hikarizsu
-    </footer>
+    </div>
 </div>
