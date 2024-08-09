@@ -1,5 +1,5 @@
 import { Injectable,  } from '@angular/core';
-import { CredAssociation, UserData, Group, } from '../data/data.service';
+import { CredAssociation, UserData, Group, Privilege} from '../data/data.service';
 import { BehaviorSubject,Observable } from 'rxjs';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class GlobalService {
   //exploitation Data
   private allCredAssociationSubject: BehaviorSubject<CredAssociation[]>;
   private allGroupsSubject: BehaviorSubject<Group[]>;
-  private allCredentialDataSubject: BehaviorSubject<Credential[]>;
+  // private allCredentialDataSubject: BehaviorSubject<Credential[]>;
 
   //Observable user
   public isLogged$: Observable<Boolean>;
@@ -21,7 +21,7 @@ export class GlobalService {
 
   public allCredAssociation$: Observable<CredAssociation[]>;
   public allGroup$: Observable<Group[]>;
-  public allCredential$: Observable<Credential[]>;
+  // public allCredential$: Observable<Credential[]>;
  
 
   constructor() {
@@ -30,20 +30,20 @@ export class GlobalService {
     
     this.allCredAssociationSubject = new BehaviorSubject<CredAssociation[]>([]);
     this.allGroupsSubject = new BehaviorSubject<Group[]>([]);
-    this.allCredentialDataSubject = new BehaviorSubject<Credential[]>([]);
+    // this.allCredentialDataSubject = new BehaviorSubject<Credential[]>([]);
 
     this.isLogged$ = this.isLogged.asObservable();
     this.userData$ = this.userDataSubject.asObservable();
 
     this.allCredAssociation$ = this.allCredAssociationSubject.asObservable();
     this.allGroup$ = this.allGroupsSubject.asObservable();
-    this.allCredential$ = this.allCredentialDataSubject.asObservable();
+    // this.allCredential$ = this.allCredentialDataSubject.asObservable();
   }
 
 
   //isLogged
-  public updateSelectedGroupId(data: boolean) { this.isLogged.next(data); }
-  public getCurrentSelectedGroupId(): boolean {return this.isLogged.getValue();}
+  public updateIsLogged(data: boolean) { this.isLogged.next(data); }
+  public getCurrentIsLogged(): boolean {return this.isLogged.getValue();}
 
   // userData
   public updateUserData(data: UserData | null): void {this.userDataSubject.next(data);}
@@ -55,7 +55,9 @@ export class GlobalService {
   public getCurrentCredAssocArray(): CredAssociation[] {return this.allCredAssociationSubject.getValue();}
   public updateCredAssocArray(data: CredAssociation): void {
     const tmp: CredAssociation[] = this.allCredAssociationSubject.getValue();
-    tmp.push(data);
+    if (!((data: CredAssociation) => tmp.some( elem => elem.groupId === data.groupId && elem.credId === data.credId))) {
+      tmp.push(data);
+    } 
     this.allCredAssociationSubject.next(tmp);
   }
 
@@ -63,12 +65,25 @@ export class GlobalService {
   public getCurrentGroupsArray(): Group[] {return this.allGroupsSubject.getValue();}
   public updateGroupsArray(data: Group): void {
     const tmp: Group[] = this.allGroupsSubject.getValue();
-    tmp.push(data)
+    const execute: boolean = !tmp.some( elem => 
+      elem.id === data.id &&
+      elem.name === data.name &&
+      elem.description === data.description &&
+      elem.password === data.password
+    )
+    if (execute) {tmp.push(data)}
     this.allGroupsSubject.next(tmp);
   }
 
   //initalizer ==> 
-  public init(): void {
-      const userData: UserData = this.userDataSubject.getValue()!;
-  }
+  // public initConnection(response: Observable<any>): void {
+  //   console.log('Authentification réussie', response);
+  //         if (response != null) {
+  //           let priv: Privilege = Privilege.USER;
+  //           if (response["privilege"] == "admin") {priv = Privilege.ADMIN}; //recuperation privileges
+  //           const userData: UserData = {userId: response["id"],username: response["username"], email: response["email"]["mailAddress"], privilege: priv};
+  //           this.globalService.updateUserData(userData);
+  //           console.log(this.globalService.getCurrentUserData());
+  //     const userData: UserData = this.userDataSubject.getValue()!;
+  // }
 }

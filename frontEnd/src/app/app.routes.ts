@@ -5,43 +5,17 @@ import { GroupsComponent } from './components/home/list/groups/groups.component'
 import { CredentialsComponent } from './components/home/list/credentials/credentials.component';
 import { OverviewComponent } from './components/home/overview/overview.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import { PresentationComponent } from './components/welcome/presentation/presentation.component';
-import { AboutmeComponent } from './components/welcome/aboutme/aboutme.component';
-import { GoalsComponent } from './components/welcome/goals/goals.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
-export const routes: Routes = [
+export const routes: Routes = [ 
     {
         path: '',
-        redirectTo: '/index',  // Redirection de la route vide vers /index
-        pathMatch: 'full'  // Assure que la redirection se fait pour la route complète
-    },
-    {
-        path: 'index',
         component: WelcomeComponent,
-        children: [
-            {
-                path: 'presentation',
-                component: PresentationComponent
-            },
-            {
-                path: 'aboutme',
-                component: AboutmeComponent
-            },
-            {
-                path: 'goals',
-                component: GoalsComponent
-            },
-            {
-                path: '',
-                redirectTo: 'presentation',
-                pathMatch: 'full',
-            },
-            {
-                path: '**',  // Capture toutes les sous-routes non définies
-                redirectTo: 'presentation',  // Redirige vers /index
-            },
-        ]
     },
+    // {
+    //     path: '/',
+    //     redirectTo: ''
+    // },
     {
         path: 'login',
         component: LoginBoxComponent
@@ -51,22 +25,26 @@ export const routes: Routes = [
         component: HomeComponent,
         children: [
             {
-                path: 'groups',
-                component: GroupsComponent
-
-            },
-            {
-                path: 'credentials',
-                component: CredentialsComponent
+                path: '',
+                redirectTo: 'overview',
+                pathMatch: 'full',
             },
             {
                 path: 'overview',
                 component: OverviewComponent
             },
+            {
+                path: 'groups',
+                component: GroupsComponent
+            },
+            {
+                path: 'credentials',
+                component: CredentialsComponent
+            },
         ]
     },
     {
-        path: '**',  // Capture toutes les routes non définies
-        redirectTo: '/index'  // Redirige vers /index
+        path: '**',
+        component: NotFoundComponent
     }
 ];

@@ -17,7 +17,7 @@ export interface CredAssociation {
 export interface Credential {
   id: number,
   email: string,
-  identifier: number,
+  identifier: string,
   password: string,
   a2f: boolean,
   platformId: number,

@@ -67,6 +67,14 @@ export class CredentialsComponent implements OnInit {
     });
   }
 
+  copyText(text: string): void {
+    navigator.clipboard.writeText(text).then(() => {
+      console.log('Text copied to clipboard');
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  }
+
   ngOnInit(): void {
     // this.groupId = this.globalService.getCurrentSelectedGroupId()!;
     if (this.globalService == null) {this.router.navigate(['/home'])}
