@@ -179,7 +179,7 @@
     color: white;
     font-size: 1rem;
     box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
+    border-radius: 4px;
 
 }
 
@@ -266,4 +266,8 @@ button {
 		color: var(--c-text-primary);
 		border-color: var(--c-text-primary);
 	}
+}
+
+.dev {
+	color: red;
 }
