@@ -1,14 +1,11 @@
 package com.accountplace.api.service;
 
-import com.accountplace.api.domains.EntiteAccount;
-import com.accountplace.api.domains.EntiteGroupe;
-import com.accountplace.api.domains.EntiteMembre;
+import com.accountplace.api.domains.data.EntiteAccount;
+import com.accountplace.api.domains.data.EntiteMembre;
 import com.accountplace.api.dto.AccountDto;
 import com.accountplace.api.dto.Email;
 import com.accountplace.api.dto.GroupDto;
-import com.accountplace.api.dto.Privilege;
 import com.accountplace.api.repositories.AccountRepository;
-import com.accountplace.api.repositories.GroupRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
